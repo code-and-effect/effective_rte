@@ -11,26 +11,6 @@ module StylishRte
     autoload :Controllers, 'stylish_rte/helpers/controllers'
   end
 
-  # Files destination path
-  mattr_accessor :relative_path
-  @@relative_path = '/assets/stylish_rte'
-
-  def self.setup
-    yield self
-  end
-
-  def self.root_path
-    @root_path ||= Pathname.new( File.dirname(File.expand_path('../', __FILE__)) )
-  end
-
-  def self.assets
-    Dir[root_path.join('vendor/assets/javascripts/stylish_rte/**', '*.{js,css,png}')].inject([]) do |list, path|
-      list << Pathname.new(path).relative_path_from(root_path.join('vendor/assets/javascripts'))
-
-      list
-    end
-  end
 end
 
-require 'stylish_rte/engine' #if defined?(::Rails)
-require 'stylish_rte/version'
+require 'stylish_rte/engine' if defined?(::Rails)

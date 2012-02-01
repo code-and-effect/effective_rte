@@ -88,7 +88,6 @@
         },
         getSelection: function() {
             if ($.browser.msie) {
-                //return (this.editor.parentWindow.getSelection) ? this.editor.parentWindow.getSelection() : this.editor.selection;
                 return this.editor.selection;
             } else {
                 return this.iframe[0].contentDocument.defaultView.getSelection();
@@ -97,7 +96,6 @@
         getRange: function() {
             var s = this.getSelection();
             if (!s) { return null; }
-            //return (s.rangeCount > 0) ? s.getRangeAt(0) : s.createRange();
             return (s.getRangeAt) ? s.getRangeAt(0) : s.createRange();
         },
         html: function(v) {
@@ -278,7 +276,7 @@
         ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
         ["cut", "copy", "paste"]
     ],
-        css: null,
+        css: "/assets/stylish_rte.css?body=1",
         toolbarText: {
             bold: "Bold", italic: "Italic", underline: "Underline", strikethrough: "Strike-Through",
             cut: "Cut", copy: "Copy", paste: "Paste",
@@ -365,8 +363,6 @@
                 mousedown(fnHA).
                 blur(fnHA);
 
-
-
             var fnTA = function() {
                 t.updateTextArea();
             };
@@ -378,8 +374,6 @@
                 blur(fnTA);
 
             $('form').submit(function() { t.toggleHTMLView(); t.toggleHTMLView(); });
-            //$(this.textarea[0].form).submit(function() { //this.textarea.closest("form").submit(function() {
-
 
             // Fix for ASP.NET Postback Model
             if (window.__doPostBack) {

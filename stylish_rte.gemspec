@@ -4,12 +4,12 @@ require "stylish_rte/version"
 
 Gem::Specification.new do |s|
   s.name        = "stylish_rte"
-  s.version     = StylishRte::VERSION
+  s.version     = "0.1"
   s.authors     = ['AgileStyle Inc.']
   s.email       = ['info@agilestyle.com']
   s.homepage    = "http://github.com/AgileStyleInc/stylish_rte"
   s.summary     = "Rails gem implementation of the Stylish Rich Text Editor"
-  s.description = "Formtastic aware WYSIWYG text-area editor "
+  s.description = "Formtastic aware WYSIWYG text-area editor"
 
   s.rubyforge_project = "stylish_rte"
 
