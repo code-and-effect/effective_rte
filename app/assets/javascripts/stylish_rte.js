@@ -1,43 +1,43 @@
 ﻿/*
-* jHtmlArea 0.7.0 - WYSIWYG Html Editor jQuery Plugin
+* StylishRTE 0.7.0 - WYSIWYG Html Editor jQuery Plugin
 * Copyright (c) 2009 Chris Pietschmann
-* http://jhtmlarea.codeplex.com
+* http://StylishRTE.codeplex.com
 * Licensed under the Microsoft Reciprocal License (Ms-RL)
-* http://jhtmlarea.codeplex.com/license
+* http://StylishRTE.codeplex.com/license
 */
 (function($) {
     $.fn.htmlarea = function(opts) {
         if (opts && typeof (opts) === "string") {
             var args = [];
             for (var i = 1; i < arguments.length; i++) { args.push(arguments[i]); }
-            var htmlarea = jHtmlArea(this[0]);
+            var htmlarea = StylishRTE(this[0]);
             var f = htmlarea[opts];
             if (f) { return f.apply(htmlarea, args); }
         }
-        return this.each(function() { jHtmlArea(this, opts); });
+        return this.each(function() { StylishRTE(this, opts); });
     };
-    var jHtmlArea = window.jHtmlArea = function(elem, options) {
+    var StylishRTE = window.StylishRTE = function(elem, options) {
         if (elem.jquery) {
-            return jHtmlArea(elem[0]);
+            return StylishRTE(elem[0]);
         }
-        if (elem.jhtmlareaObject) {
-            return elem.jhtmlareaObject;
+        if (elem.StylishRTEObject) {
+            return elem.StylishRTEObject;
         } else {
-            return new jHtmlArea.fn.init(elem, options);
+            return new StylishRTE.fn.init(elem, options);
         }
     };
-    jHtmlArea.fn = jHtmlArea.prototype = {
+    StylishRTE.fn = StylishRTE.prototype = {
 
-        // The current version of jHtmlArea being used
-        jhtmlarea: "0.7.0",
+        // The current version of StylishRTE being used
+        StylishRTE: "0.7.0",
 
         init: function(elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {
-                var opts = $.extend({}, jHtmlArea.defaultOptions, options);
-                elem.jhtmlareaObject = this;
+                var opts = $.extend({}, StylishRTE.defaultOptions, options);
+                elem.StylishRTEObject = this;
 
                 var textarea = this.textarea = $(elem);
-                var container = this.container = $("<div/>").addClass("jHtmlArea").width(textarea.width()).insertAfter(textarea);
+                var container = this.container = $("<div/>").addClass("StylishRTE").width(textarea.width()).insertAfter(textarea);
 
                 var toolbar = this.toolbar = $("<div/>").addClass("ToolBar").appendTo(container);
                 priv.initToolBar.call(this, opts);
@@ -61,7 +61,7 @@
         dispose: function() {
             this.textarea.show().insertAfter(this.container);
             this.container.remove();
-            this.textarea[0].jhtmlareaObject = null;
+            this.textarea[0].StylishRTEObject = null;
         },
         execCommand: function(a, b, c) {
             this.iframe[0].contentWindow.focus();
@@ -263,12 +263,11 @@
             this.editor.body.innerHTML = this.textarea.val();
         }
     };
-    jHtmlArea.fn.init.prototype = jHtmlArea.fn;
+    StylishRTE.fn.init.prototype = StylishRTE.fn;
 
-    jHtmlArea.defaultOptions = {
+    StylishRTE.defaultOptions = {
         toolbar: [
-        ["html"], ["bold", "italic", "underline", "strikethrough", "|", "subscript", "superscript"],
-        ["increasefontsize", "decreasefontsize"],
+        ["html"], ["bold", "italic", "underline", "strikethrough"],
         ["orderedlist", "unorderedlist"],
         ["indent", "outdent"],
         ["justifyleft", "justifycenter", "justifyright"],
@@ -276,17 +275,15 @@
         ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
         ["cut", "copy", "paste"]
     ],
-        css: "/assets/stylish_rte.css?body=1",
+        css: "/assets/application.css?body=1",
         toolbarText: {
             bold: "Bold", italic: "Italic", underline: "Underline", strikethrough: "Strike-Through",
             cut: "Cut", copy: "Copy", paste: "Paste",
             h1: "Heading 1", h2: "Heading 2", h3: "Heading 3", h4: "Heading 4", h5: "Heading 5", h6: "Heading 6", p: "Paragraph",
             indent: "Indent", outdent: "Outdent", horizontalrule: "Insert Horizontal Rule",
             justifyleft: "Left Justify", justifycenter: "Center Justify", justifyright: "Right Justify",
-            increasefontsize: "Increase Font Size", decreasefontsize: "Decrease Font Size", forecolor: "Text Color",
             link: "Insert Link", unlink: "Remove Link", image: "Insert Image",
             orderedlist: "Insert Ordered List", unorderedlist: "Insert Unordered List",
-            subscript: "Subscript", superscript: "Superscript",
             html: "Show/Hide HTML Source View"
         }
     };
