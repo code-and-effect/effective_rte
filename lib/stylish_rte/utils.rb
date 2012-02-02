@@ -14,21 +14,16 @@ module StylishRte
       end
 
       def js_replace(dom_id, options = {})
-        js_options = applay_options(options)
+        js_options = jsify_options(options)
 
-        js = "$('##{dom_id}').htmlarea();"
-#        js = ["if (CKEDITOR.instances['#{dom_id}']) {CKEDITOR.remove(CKEDITOR.instances['#{dom_id}']);}"]
-#
-#        if js_options.blank?
-#          js << "CKEDITOR.replace('#{dom_id}');"
-#        else
-#          js << "CKEDITOR.replace('#{dom_id}', { #{js_options} });"
-#        end
-
-#        js.join
+        if js_options.blank?
+          js = "$('##{dom_id}').htmlarea();"
+        else
+          js = "$('##{dom_id}').htmlarea({#{js_options}});"
+        end
       end
 
-      def applay_options(options)
+      def jsify_options(options)
         str = []
 
         options.each do |key, value|
@@ -36,7 +31,7 @@ module StylishRte
             when String then
               value.split(//).first == '^' ? value.slice(1..-1) : "'#{value}'"
             when Hash then
-              "{ #{applay_options(value)} }"
+              "{ #{jsify_options(value)} }"
             when Array then
               arr = value.collect { |v| "'#{v}'" }
               "[ #{arr.join(',')} ]"

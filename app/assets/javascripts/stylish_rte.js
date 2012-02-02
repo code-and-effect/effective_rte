@@ -37,9 +37,9 @@
                 elem.StylishRTEObject = this;
 
                 var textarea = this.textarea = $(elem);
-                var container = this.container = $("<div/>").addClass("StylishRTE").width(textarea.width()).insertAfter(textarea);
+                var container = this.container = $("<div/>").addClass(opts.container_class).width(textarea.width()).insertAfter(textarea);
 
-                var toolbar = this.toolbar = $("<div/>").addClass("ToolBar").appendTo(container);
+                var toolbar = this.toolbar = $("<div/>").addClass(opts.toolbar_class).appendTo(container);
                 priv.initToolBar.call(this, opts);
 
                 var iframe = this.iframe = $("<iframe/>").height(textarea.height());
@@ -266,6 +266,12 @@
     StylishRTE.fn.init.prototype = StylishRTE.fn;
 
     StylishRTE.defaultOptions = {
+        css: "/assets/application.css?body=1",
+
+        body_class: "stylish_rte_body",
+        container_class: "stylish_rte",
+        toolbar_class: "stylish_rte_toolbar",
+
         toolbar: [
         ["html"], ["bold", "italic", "underline", "strikethrough"],
         ["orderedlist", "unorderedlist"],
@@ -275,7 +281,6 @@
         ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
         ["cut", "copy", "paste"]
     ],
-        css: "/assets/application.css?body=1",
         toolbarText: {
             bold: "Bold", italic: "Italic", underline: "Underline", strikethrough: "Strike-Through",
             cut: "Cut", copy: "Copy", paste: "Paste",
@@ -306,6 +311,8 @@
             if (options.css) {
                 var e = edit.createElement('link'); e.rel = 'stylesheet'; e.type = 'text/css'; e.href = options.css; edit.getElementsByTagName('head')[0].appendChild(e);
             }
+
+            edit.getElementsByTagName("body")[0].setAttribute("class", options.body_class);
         },
         initToolBar: function(options) {
             var that = this;

@@ -8,6 +8,7 @@ module StylishRte
 
       def stylish_rte_text_area(object_name, method, options = {})
         options = { :language => I18n.locale.to_s }.merge(options)
+
         input_html = (options.delete(:input_html) || {})
         hash = input_html.stringify_keys
 
