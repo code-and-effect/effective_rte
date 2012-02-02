@@ -7,9 +7,13 @@ module StylishRte
   class Engine < ::Rails::Engine
     isolate_namespace StylishRte
 
-    config.before_initialize do
-      config.action_view.javascript_expansions[:stylish_rte] = %w(stylish_rte)
+    initializer 'stylish_rte.assets_precompile' do |app|
+      app.config.assets.precompile += StylishRte.assets
     end
+
+   # config.before_initialize do
+   #   config.action_view.javascript_expansions[:stylish_rte] = %w(stylish_rte)
+   # end
 
     initializer "stylish_rte.helpers" do
       ActiveSupport.on_load :action_controller do
