@@ -7,8 +7,14 @@ module StylishRte
   class Engine < ::Rails::Engine
     isolate_namespace StylishRte
 
-    initializer 'stylish_rte.assets_precompile' do |app|
-      app.config.assets.precompile += StylishRte.assets
+    #initializer 'stylish_rte.assets_precompile' do |app|
+      # app.config.assets.precompile += StylishRte.assets
+    #end
+
+    initializer "stylish_rte.load_app_instance_data" do |app|
+      StylishRte.setup do |config|
+        config.app_root = app.root
+      end
     end
 
     initializer "stylish_rte.helpers" do

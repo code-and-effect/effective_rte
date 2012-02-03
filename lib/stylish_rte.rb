@@ -11,8 +11,14 @@ module StylishRte
     autoload :Controllers, 'stylish_rte/helpers/controllers'
   end
 
+  mattr_accessor :app_root
+
   def self.root_path
     @root_path ||= Pathname.new( File.dirname(File.expand_path('../', __FILE__)) )
+  end
+
+  def self.setup
+    yield self
   end
 
   def self.assets

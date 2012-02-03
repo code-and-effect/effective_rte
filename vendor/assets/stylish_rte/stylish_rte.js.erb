@@ -136,11 +136,24 @@
         underline: function() { this.ec("underline"); },
         strikeThrough: function() { this.ec("strikethrough"); },
         image: function(url) {
+            /*
             if ($.browser.msie && !url) {
                 this.ec("insertImage", true);
             } else {
                 this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
             }
+            */
+
+            /* This is now going to load a fancybox modal and pull from an AJAX content */
+            $.fancybox({
+                'width': '90%',
+                'height': '90%',
+                'autoScale': true,
+                'transitionIn': 'fade',
+                'transitionOut': 'fade',
+                'type': 'iframe',
+                'href': '/stylish_rte/assets/new'
+            });
         },
         removeFormat: function() {
             this.ec("removeFormat", false, []);

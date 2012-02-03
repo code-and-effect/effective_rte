@@ -22,6 +22,13 @@ Add the following to `application.js` so it compiles to the asset_pipeline
 //= require stylish_rte/stylish_rte
 ````
 
+Then run the installer
+
+````ruby
+rails generate stylish_rte:install
+````
+
+
 ### Rails 3.x
 
 Nope.
