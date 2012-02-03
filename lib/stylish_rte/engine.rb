@@ -11,17 +11,12 @@ module StylishRte
       app.config.assets.precompile += StylishRte.assets
     end
 
-   # config.before_initialize do
-   #   config.action_view.javascript_expansions[:stylish_rte] = %w(stylish_rte)
-   # end
-
     initializer "stylish_rte.helpers" do
       ActiveSupport.on_load :action_controller do
         ActionController::Base.send :include, StylishRte::Helpers::Controllers
       end
 
       ActiveSupport.on_load :action_view do
-        ActionView::Base.send :include, StylishRte::Helpers::ViewHelper
         ActionView::Base.send :include, StylishRte::Helpers::FormHelper
         ActionView::Helpers::FormBuilder.send :include, StylishRte::Helpers::FormBuilder
       end

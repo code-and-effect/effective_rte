@@ -22,12 +22,6 @@ Add the following to `application.js` so it compiles to the asset_pipeline
 //= require stylish_rte/stylish_rte
 ````
 
-Also add the following to `application.css` so it compiles to the asset_pipeline
-
-````ruby
-*= require stylish_rte/stylish_rte
-````
-
 ### Rails 3.x
 
 Nope.

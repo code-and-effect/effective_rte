@@ -33,6 +33,8 @@
 
         init: function(elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {
+                $('head').append('<link rel="stylesheet" href="/assets/stylish_rte/stylish_rte.css" type="text/css" />');
+
                 var opts = $.extend({}, StylishRTE.defaultOptions, options);
                 elem.StylishRTEObject = this;
 
@@ -274,10 +276,10 @@
 
         toolbar: [
         ["html"], ["bold", "italic", "underline", "strikethrough"],
-        ["orderedlist", "unorderedlist"],
+        ["orderedlist", "unorderedlist", "horizontalrule"],
         ["indent", "outdent"],
         ["justifyleft", "justifycenter", "justifyright"],
-        ["link", "unlink", "image", "horizontalrule"],
+        ["link", "image"],
         ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
         ["cut", "copy", "paste"]
     ],
@@ -303,6 +305,7 @@
             }
         },
         initEditor: function(options) {
+
             var edit = this.editor = this.iframe[0].contentWindow.document;
             edit.designMode = 'on';
             edit.open();
