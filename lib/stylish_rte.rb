@@ -1,3 +1,4 @@
+require 'active_record'
 require 'pathname'
 
 module StylishRte
@@ -30,3 +31,4 @@ module StylishRte
 end
 
 require 'stylish_rte/engine' if defined?(::Rails)
+require 'acts_as_stylish_asset_box/base'
