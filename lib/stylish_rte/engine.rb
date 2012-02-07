@@ -1,13 +1,21 @@
 require 'rails'
 require 'action_controller'
 
+require 'carrierwave'
+
 require 'stylish_rte'
 
 module StylishRte
   # Required to access the asset pipeline
   # @private
   class Engine < ::Rails::Engine
-    #isolate_namespace StylishRte  this affects routes, but rspec hates it
+    isolate_namespace StylishRte
+
+    config.generators do |g|
+      g.orm :active_record
+      g.template_engine :erb
+      g.test_framework :rspec
+    end
 
     #initializer 'stylish_rte.assets_precompile' do |app|
       # app.config.assets.precompile += StylishRte.assets

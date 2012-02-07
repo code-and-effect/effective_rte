@@ -1,11 +1,6 @@
 require 'spec_helper'
 
-require 'app/uploaders/stylish_rte/asset_uploader.rb'
-require 'app/models/stylish_rte/asset.rb'
-
 describe StylishRte::Asset do
-  load_asset_schema
-
   before(:each) do
     @asset = StylishRte::Asset.new
 

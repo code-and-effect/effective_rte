@@ -40,3 +40,18 @@ To replace the default text_area provider in formtastic:
 ````ruby
 = form.input :body_text, :as => :stylish_rte
 ````
+
+### Testing
+
+To run the StylishRte rspec tests, simply:
+
+````ruby
+rake test
+````
+
+But you also might have to set up the environment first:
+
+````ruby
+bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare
+rake db:migrate RAILS_ENV=test
+````

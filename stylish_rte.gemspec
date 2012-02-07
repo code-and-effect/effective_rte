@@ -23,12 +23,16 @@ Gem::Specification.new do |s|
   s.add_dependency("haml")
   s.add_dependency("carrierwave")
 
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency 'database_cleaner'
 
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
 end
+
+#bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare
+#bundle exec rspec spec
 
 
 #      create  config/initializers/ckeditor.rb

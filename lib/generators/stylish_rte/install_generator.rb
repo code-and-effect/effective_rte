@@ -21,6 +21,10 @@ module StylishRte
         template "stylish_rte.rb", "config/initializers/stylish_rte.rb"
       end
 
+      def mount_engine
+        route "mount StylishRte::Engine => '/stylish_rte'"
+      end
+
 #      def create_model
 #        [:asset].each do |filename|
 #          template "models/#{filename}.rb", File.join("app/models/stylish_rte", "#{filename}.rb")
