@@ -10,14 +10,15 @@ module StylishRte
     end
 
     def create
-      @asset = Asset.new(params[:asset])
+      # This is a create method for use with uplodify
+      @asset = Asset.new(:data => params[:Filedata])
+
       if @asset.save
-        flash[:notice] = "Successfully created asset."
+        render :text => "#{@asset.id}"
       else
-        flash[:error] = "Unable to create the asset"
+        render :text => "error"
       end
 
-      respond_with(@asset)
     end
 
     def index

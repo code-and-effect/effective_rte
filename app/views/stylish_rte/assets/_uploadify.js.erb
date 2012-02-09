@@ -1,0 +1,40 @@
+$(document).ready(function() {
+  <% key = Rails.application.config.session_options[:key] %>
+  var uploadify_script_data = {};
+  var csrf_param = $('meta[name=csrf-param]').attr('content');
+  var csrf_token = $('meta[name=csrf-token]').attr('content');
+  uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token));
+  uploadify_script_data['<%= key %>'] = '<%= cookies[key] %>';
+
+  $('#asset_uploadify.ready_for_uploadify').uploadify({
+    uploader        : '/assets/uploadify.swf',
+    script          : '/stylish_rte/assets',
+    cancelImg       : '/assets/uploadify_cancel.png',
+    auto            : true,
+    multi           : true,
+    removeCompleted : true,
+    scriptData      : uploadify_script_data,
+    onComplete      : function(event, ID, fileObj, response, data) {
+      if(response == "error")
+        alert("There was an error uploading this file.  Please try again.");
+      else {
+        $.get('/stylish_rte/assets/' + response, function(data) {
+          $('#<%= target_div %> > .assets').prepend(data);
+        });
+      }
+
+        //$('#<%= target_div %> > .assets').prepend("<p>YERERER</p>");
+        //alert(response);
+      //alert("I am complete and should refresh <%= target_div %>");
+      //alert("Data: " + response);
+      //$('#<%= target_div %> > .assets').prepend("<p>YERERER</p>");
+    },
+
+    onError: function (a, b, c, d) {
+      alert('error ' + d.type + ' ' + d.status);
+    },
+  });
+
+  $('#asset_uploadify.ready_for_uploadify').removeClass('ready_for_uploadify');
+
+});

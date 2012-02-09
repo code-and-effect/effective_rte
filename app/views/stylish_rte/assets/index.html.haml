@@ -5,9 +5,14 @@
 .assets_frame{:id => "#{target_div}", :style => "width: 600px; height: 600px;"}
   %h2 Existing Assets
 
-  #assets
+  .assets
     - if @assets.empty?
       %p No Assets exist yet.  Upload one.
     - else
-      = render :partial => @assets.reverse, :locals => {:htmlarea => htmlarea}
+      = render :partial => @assets.reverse, :locals => {:htmlarea => htmlarea }
 
+  %h2 Upload an Asset
+
+  .asset_uploader
+    = javascript_tag(render :partial => '/stylish_rte/assets/uploadify', :formats => [:js], :locals => {:target_div => target_div})
+    = render :partial => '/stylish_rte/assets/uploadify', :formats => [:html]
