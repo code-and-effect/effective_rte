@@ -18,13 +18,13 @@ $(document).ready(function() {
       if(response == "error")
         alert("There was a server side error while uploading this file.  Please try again.");
       else {
-        $.get('/stylish_rte/assets/show_asset_for_editor/' + response + '/' + '<%= htmlarea %>', function(data) {
+        $.get('/stylish_rte/assets/' + response + '/' + '<%= htmlarea %>', function(data) {
           $('#<%= target_div %> > .assets').prepend(data);
         });
       }
     },
     onError: function (a, b, c, d) {
-      alert('error ' + d.type + ' ' + d.status);
+      alert('An error occurred wile uploading this file.  Please try again.  Error Info:' + d.type + ' ' + d.status);
     },
   });
 

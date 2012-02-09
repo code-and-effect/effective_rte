@@ -1,6 +1,6 @@
 module StylishRte
   class AssetsController < ActionController::Base
-    respond_to :html, :xml, :js
+    respond_to :html, :js
 
     def new
       @asset = Asset.new
@@ -8,7 +8,7 @@ module StylishRte
     end
 
     def create
-      # This is a create method for use with uplodify
+      # This is a create method for specific use with uplodify
       @asset = Asset.new(:data => params[:Filedata])
 
       if @asset.save
@@ -25,6 +25,7 @@ module StylishRte
 
     def show
       @asset = Asset.find(params[:id])
+      @htmlarea = params[:htmlarea] if params[:htmlarea].present?
       respond_with @asset
     end
 
@@ -38,12 +39,6 @@ module StylishRte
       @asset = Asset.find(params[:id])
       @htmlarea = params[:htmlarea]
       respond_to { |format| format.js }
-    end
-
-    def show_asset_for_editor
-      @asset = Asset.find(params[:id])
-      @htmlarea = params[:htmlarea]
-      respond_with @asset
     end
   end
 end

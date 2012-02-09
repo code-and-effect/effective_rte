@@ -1,0 +1,5 @@
+%h2 Upload an Asset
+
+.asset_uploader
+  = javascript_tag(render :partial => '/stylish_rte/assets/uploadify', :formats => [:js], :locals => {:target_div => target_div, :htmlarea => htmlarea})
+  = raw("<input id=\"#{target_div}_uploadify\" name=\"#{target_div}_uploadify\" class=\"ready_for_uploadify\" type=\"file\" />")
