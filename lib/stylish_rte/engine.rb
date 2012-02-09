@@ -1,8 +1,8 @@
 require 'rails'
 require 'action_controller'
+require 'active_record'
 
 require 'carrierwave'
-
 require 'stylish_rte'
 
 module StylishRte
@@ -16,6 +16,8 @@ module StylishRte
       g.template_engine :erb
       g.test_framework :rspec
     end
+
+    #config.action_view.javascript_expansions[:ckeditor] = "ckeditor/ckeditor"
 
     #initializer 'stylish_rte.assets_precompile' do |app|
       # app.config.assets.precompile += StylishRte.assets

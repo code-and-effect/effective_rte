@@ -1,0 +1,13 @@
+-# This is the entry point for the iFrame that is to manage the assets
+
+- @assets = StylishRte::Asset.all
+
+.assets_frame{:id => "#{target_div}", :style => "width: 600px; height: 600px;"}
+  %h2 Existing Assets
+
+  #assets
+    - if @assets.empty?
+      %p No Assets exist yet.  Upload one.
+    - else
+      = render :partial => @assets.reverse, :locals => {:htmlarea => htmlarea}
+

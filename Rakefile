@@ -28,21 +28,12 @@ load 'rails/tasks/engine.rake'
 
 Bundler::GemHelper.install_tasks
 
-#require 'rake'
-#require 'rspec/core/rake_task'
-#require 'active_record'
 
-#desc 'Generate the testing database'
-#namespace :db do
-#  namespace :test do
-#    task :prepare do |t|
-#      config = YAML::load(IO.read(File.dirname(__FILE__) + '/spec/database.yml'))
-#      ActiveRecord::Base.establish_connection( config['test'] )
-#      ActiveRecord::Base.connection()
-#      ActiveRecord::Base.execute("create database #{config['test'][:database]} CHARACTER SET utf8 COLLATE utf8_general_ci;")
-#    end
-#  end
-#end
+desc "Rebuild the database from scratch and reload migrations"
+task :scrub do |t|
+  exec { 'bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare' }
+  exec { 'rake db:migrate RAILS_ENV=test' }
+end
 
 desc "Run all examples"
 RSpec::Core::RakeTask.new(:test) do |t|

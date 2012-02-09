@@ -13,15 +13,15 @@
 ActiveRecord::Schema.define(:version => 1) do
 
   create_table "stylish_rte_assets", :force => true do |t|
-    t.string   "data_file_name",                      :null => false
+    t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
-    t.string   "data_file_description"
+    t.string   "data",                            :null => false
     t.integer  "assetable_id"
-    t.string   "assetable_type",        :limit => 30
-    t.string   "type",                  :limit => 30
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "stylish_rte_assets", ["assetable_type", "assetable_id"], :name => "idx_stylish_rte_assetable"

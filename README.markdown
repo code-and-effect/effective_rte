@@ -28,6 +28,12 @@ Then run the installer
 rails generate stylish_rte:install
 ````
 
+And migrate your database
+````ruby
+rake db:migrate
+````
+
+The stylish_rte gem should now be setup and ready to use
 
 ### Rails 3.x
 
@@ -46,7 +52,7 @@ To replace the default text_area provider in formtastic:
 To run the StylishRte rspec tests, simply:
 
 ````ruby
-rake test
+/stylish_rte/ > rake test
 ````
 
 But you also might have to set up the environment first:

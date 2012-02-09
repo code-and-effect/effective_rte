@@ -34,7 +34,7 @@ module StylishRte
 #      end
 
       def create_migration
-        migration_template "migration/create_assets.rb", File.join('db/migrate', 'create_stylish_rte_assets.rb')
+        migration_template "../../../../db/migrate/01_create_stylish_rte_assets.rb", File.join('db/migrate', 'create_stylish_rte_assets.rb')
       end
 
     end

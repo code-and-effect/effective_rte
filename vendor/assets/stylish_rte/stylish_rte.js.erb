@@ -30,13 +30,16 @@
 
         // The current version of StylishRTE being used
         StylishRTE: "0.7.0",
+        FancyboxTargetDiv: "",
 
         init: function(elem, options) {
             if (elem.nodeName.toLowerCase() === "textarea") {
-                $('head').append('<link rel="stylesheet" href="/assets/stylish_rte/stylish_rte.css" type="text/css" />');
+                $('head').append('<link rel="stylesheet" href="/assets/stylish_rte.css" type="text/css" />');
 
                 var opts = $.extend({}, StylishRTE.defaultOptions, options);
                 elem.StylishRTEObject = this;
+
+                FancyboxTargetDiv = opts.target_div;
 
                 var textarea = this.textarea = $(elem);
                 var container = this.container = $("<div/>").addClass(opts.container_class).width(textarea.width()).insertAfter(textarea);
@@ -102,7 +105,7 @@
         },
         html: function(v) {
             if (v) {
-                this.pastHTML(v);
+                this.pasteHTML(v);
             } else {
                 return toHtmlString();
             }
@@ -131,6 +134,19 @@
         paste: function() {
             this.ec("paste");
         },
+        insertAsset: function(text) {
+            console.log(text);
+            console.log($.fn);
+            console.log(StylishRTE.fn);
+            // StylishRTE.pasteHTML(text);
+            // this.pasteHTML(text);
+            //if ($.browser.msie) {
+            //    this.ec("createLink", true, text);
+            //} else {
+            //    this.ec("createLink", false, text);
+            //}
+        },
+
         bold: function() { this.ec("bold"); },
         italic: function() { this.ec("italic"); },
         underline: function() { this.ec("underline"); },
@@ -143,16 +159,14 @@
                 this.ec("insertImage", false, (url || prompt("Image URL:", "http://")));
             }
             */
-
-            /* This is now going to load a fancybox modal and pull from an AJAX content */
             $.fancybox({
+                'href': '#' + FancyboxTargetDiv,
                 'width': '90%',
                 'height': '90%',
-                'autoScale': true,
+                'autoScale': false,
                 'transitionIn': 'fade',
-                'transitionOut': 'fade',
-                'type': 'iframe',
-                'href': '/stylish_rte/assets/new'
+                'transitionOut': 'none',
+                'speedOut': 0,
             });
         },
         removeFormat: function() {

@@ -1,0 +1,4 @@
+%p
+  = "Asset #{asset.id}: #{asset.data.url}"
+  = link_to 'Delete', asset, :confirm => 'Are you sure?', :method => :delete, :remote => true
+  = link_to "Insert", insert_asset_into_editor_path(asset, htmlarea), :remote => true

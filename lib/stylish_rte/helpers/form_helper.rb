@@ -15,9 +15,15 @@ module StylishRte
         instance_tag = ActionView::Base::InstanceTag.new(object_name, method, self, options.delete(:object))
         instance_tag.send(:add_default_name_and_id, hash)
 
+        options[:target_div] = "asset_frame_for_" + hash['id']
+
         output_buffer = ActiveSupport::SafeBuffer.new
         output_buffer << instance_tag.to_text_area_tag(input_html)
         output_buffer << javascript_tag(Utils.js_replace(hash['id'], options))
+
+        output_buffer << content_tag(:div, :class => 'assets_frame_container', :style => 'display: none;') do
+          render(:file => 'stylish_rte/assets/index', :layout => "layouts/asset_frame", :locals => {:target_div => options[:target_div], :htmlarea => hash['id']})
+        end
 
         output_buffer
       end

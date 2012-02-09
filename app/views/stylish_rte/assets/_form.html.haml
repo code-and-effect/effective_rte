@@ -1,0 +1,15 @@
+%p
+  My Current Asset
+  = @asset.data_url if @asset.data?
+  = "<doesnt exist>" if !@asset.data?
+
+= form.inputs "Asset" do
+  %p
+    = form.file_field :data
+    = form.hidden_field :data_cache
+
+  %p
+    = form.check_box :remove_data
+    Remove data
+
+= form.buttons
