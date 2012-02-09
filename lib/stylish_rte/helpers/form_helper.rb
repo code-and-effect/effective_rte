@@ -21,11 +21,7 @@ module StylishRte
         output_buffer << instance_tag.to_text_area_tag(input_html)
         output_buffer << javascript_tag(Utils.js_replace(hash['id'], options))
 
-        output_buffer << content_tag(:div, :class => 'assets_frame_container', :style => 'display: none;') do
-          render(:file => 'stylish_rte/assets/index', :layout => "layouts/asset_frame", :locals => {:target_div => options[:target_div], :htmlarea => hash['id']})
-        end
-
-        output_buffer
+        output_buffer << render(:file => 'stylish_rte/assets/index', :layout => "layouts/asset_frame", :locals => {:target_div => options[:target_div], :htmlarea => hash['id']})
       end
     end
   end

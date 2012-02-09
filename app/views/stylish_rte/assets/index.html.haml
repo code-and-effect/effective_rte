@@ -1,18 +1,17 @@
 -# This is the entry point for the iFrame that is to manage the assets
-
 - @assets = StylishRte::Asset.all
 
-.assets_frame{:id => "#{target_div}", :style => "width: 600px; height: 600px;"}
-  %h2 Existing Assets
+%h2 Existing Assets
 
-  .assets
-    - if @assets.empty?
-      %p No Assets exist yet.  Upload one.
-    - else
-      = render :partial => @assets.reverse, :locals => {:htmlarea => htmlarea }
+.assets
+  - if @assets.empty?
+    %p No Assets exist yet.  Upload one.
+  - else
+    = render :partial => @assets.reverse, :locals => {:htmlarea => htmlarea }
 
-  %h2 Upload an Asset
+%h2 Upload an Asset
 
-  .asset_uploader
-    = javascript_tag(render :partial => '/stylish_rte/assets/uploadify', :formats => [:js], :locals => {:target_div => target_div})
-    = render :partial => '/stylish_rte/assets/uploadify', :formats => [:html]
+.asset_uploader
+  = javascript_tag(render :partial => '/stylish_rte/assets/uploadify', :formats => [:js], :locals => {:target_div => target_div, :htmlarea => htmlarea})
+  = render :partial => '/stylish_rte/assets/uploadify', :formats => [:html], :locals => {:target_div => target_div}
+

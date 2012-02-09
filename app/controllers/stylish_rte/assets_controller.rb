@@ -2,8 +2,6 @@ module StylishRte
   class AssetsController < ActionController::Base
     respond_to :html, :xml, :js
 
-    layout 'asset_frame'
-
     def new
       @asset = Asset.new
       respond_with(@asset)
@@ -18,7 +16,6 @@ module StylishRte
       else
         render :text => "error"
       end
-
     end
 
     def index
@@ -31,10 +28,22 @@ module StylishRte
       respond_with @asset
     end
 
+    def destroy
+      @asset = Asset.find(params[:id])
+      @asset.destroy
+      respond_with(@asset)
+    end
+
     def insert_asset_into_editor
       @asset = Asset.find(params[:id])
       @htmlarea = params[:htmlarea]
       respond_to { |format| format.js }
+    end
+
+    def show_asset_for_editor
+      @asset = Asset.find(params[:id])
+      @htmlarea = params[:htmlarea]
+      respond_with @asset
     end
   end
 end
