@@ -1,4 +1,6 @@
-﻿div.stylish_rte { display: inline-block; border: solid 1px #ccc;}
+﻿div.stylish_rte { display: inline-block; border: solid 1px #ccc; width: 77.5% !important;}
+li.error div.stylish_rte { border: solid 1px #932419; }
+
 div.stylish_rte div { background-color: white;}
 div.stylish_rte .stylish_rte_toolbar { }
 div.stylish_rte .stylish_rte_toolbar ul { border: solid 1px #ccc; margin: 1px; padding: 1px; float: left; background: #fff url(/assets/stylish_rte/stylish_rte_toolbar_bg.png) repeat-x;}
