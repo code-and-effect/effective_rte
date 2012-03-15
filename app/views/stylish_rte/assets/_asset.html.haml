@@ -1,5 +1,0 @@
-.asset{:id => dom_id(asset)}
-  %p
-    = "Asset #{asset.id}: #{asset.data.url}"
-    = link_to "Insert", "/stylish_rte/assets/insert_asset_into_editor/#{asset.id}/#{htmlarea}", :remote => true
-    = link_to 'Delete', "/stylish_rte/assets/#{asset.id}", :confirm => 'Are you sure?', :method => :delete, :remote => true

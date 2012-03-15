@@ -19,18 +19,19 @@ gem "stylish_rte"
 Add the following to `application.js` so it compiles to the asset_pipeline
 
 ````ruby
-//= require stylish_rte/stylish_rte
+//= require stylish_rte
 ````
 
-Then run the installer
+Add the following to `application.css` so it compiles to the asset_pipeline
 
 ````ruby
-rails generate stylish_rte:install
+*= require stylish_rte
 ````
 
-And migrate your database
+For integration with ActiveAdmin, add the following to 'config/initializers/active_admin.rb'
 ````ruby
-rake db:migrate
+config.register_stylesheet 'stylish_rte.css'
+config.register_javascript 'stylish_rte.js'
 ````
 
 The stylish_rte gem should now be setup and ready to use
@@ -45,19 +46,4 @@ To replace the default text_area provider in formtastic:
 
 ````ruby
 = form.input :body_text, :as => :stylish_rte
-````
-
-### Testing
-
-To run the StylishRte rspec tests, simply:
-
-````ruby
-/stylish_rte/ > rake test
-````
-
-But you also might have to set up the environment first:
-
-````ruby
-bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare
-rake db:migrate RAILS_ENV=test
 ````

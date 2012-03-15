@@ -20,26 +20,9 @@ Gem::Specification.new do |s|
   s.add_dependency("rails", ">= 3.1.0")
   s.add_dependency("jquery-rails")
   s.add_dependency("formtastic", "> 2.0")
-  s.add_dependency("haml")
-  s.add_dependency("carrierwave")
 
-  s.add_development_dependency "rspec-rails"
-  s.add_development_dependency 'database_cleaner'
 
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
 end
-
-#bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare
-#bundle exec rspec spec
-
-
-#      create  config/initializers/ckeditor.rb
-#       route  mount Ckeditor::Engine => '/ckeditor'
-#      create  app/models/ckeditor/asset.rb
-#      create  app/models/ckeditor/picture.rb
-#      create  app/models/ckeditor/attachment_file.rb
-#      create  app/uploaders/ckeditor_attachment_file_uploader.rb
-#      create  app/uploaders/ckeditor_picture_uploader.rb
-#      create  db/migrate/20120203133549_create_ckeditor_assets.rb

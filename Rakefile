@@ -28,13 +28,6 @@ load 'rails/tasks/engine.rake'
 
 Bundler::GemHelper.install_tasks
 
-
-desc "Rebuild the database from scratch and reload migrations"
-task :scrub do |t|
-  exec { 'bundle exec rake -f spec/dummy/Rakefile db:drop db:create db:migrate db:test:prepare' }
-  exec { 'rake db:migrate RAILS_ENV=test' }
-end
-
 desc "Run all examples"
 RSpec::Core::RakeTask.new(:test) do |t|
   t.rspec_opts = %w[--color]
