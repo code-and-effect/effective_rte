@@ -24,7 +24,7 @@ module EffectiveRte
 
         output_buffer = ActiveSupport::SafeBuffer.new
         output_buffer << instance_tag.to_text_area_tag(options)
-        output_buffer << javascript_tag(Utils.js_replace(hash['id'], javascript_options))
+        output_buffer << javascript_tag(render :partial => 'effective_rte/editor', :locals => {:dom_id => hash['id'], :opts => javascript_options})
       end
     end
   end
