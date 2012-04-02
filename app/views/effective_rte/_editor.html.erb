@@ -1,0 +1,10 @@
+<script type="text/javascript">
+  $('#<%= dom_id %>').wymeditor(
+    {<%= raw opts.to_json[1..-2] %>,
+      postInit: function(wym) {
+        wymInsertAssets = wym.insert_assets({"dialog_url" : "<%= opts['assetDialogUrl'] %>"});
+        wymInsertAssets.init(wym);
+      }
+    }
+  );
+</script>
