@@ -8,7 +8,7 @@
     *        http://www.wymeditor.org/
     *
     * File Name:
-    *        jquery.wymeditor.tidy.js
+    *        jquery.wymeditor.insert_assets.js
     *        HTML Tidy plugin for WYMeditor
     *
     * File Authors:
@@ -55,26 +55,26 @@ WymInsertAssets.prototype.insert_assets = function() {
   var wym = this._wym
 
   var dialog_frame = $(
-    "<div title='Dialog Title'>" +
+    "<div title='Insert Asset'>" +
       "<iframe id='wym_insert_asset_iframe' src=" + this._options.dialog_url + " width='100%' height='100%' marginWidth='0' marginHeight='0' frameBorder='0' scrolling='auto' title='Insert Asset'></iframe>" +
-      "<p id='wym_insert_asset_flash'>Insert an asset</p>" +
     "</div>");
+
+  window_height = ($(window).height() * 0.85);
 
   dialog_frame.dialog({
     modal: true,
-    height: 700,
-    width: 800,
+    height: window_height, // if we pass 85% the modal window will render with height: 0
+    width: "85%",
     close: function(event, ui) { $(this).remove(); },
     buttons: {
       Close: function() { $(this).dialog("close"); }
-      }
+    }
   });
 
   $('#wym_insert_asset_iframe', dialog_frame).on('load', function() {
-    $(this).contents().find('#header').remove();
-    $(this).contents().find('div.download_links').remove();
     $(this).contents().find('a.asset-insertable').on("click",
       function(event) { wym._exec(WYMeditor.INSERT_IMAGE, $(this).data("asset"));
+      $(this).effect("highlight", { color: "#000000"}, 1000);
       event.preventDefault();
     });
   });
