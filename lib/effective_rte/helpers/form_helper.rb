@@ -19,12 +19,13 @@ module EffectiveRte
           :skin => "default",
           :wymPath => "/assets/wymeditor/jquery.wymeditor.js",
           :jQueryPath => "/assets/jquery.js",
+          :assetDialogUrl => "/admin/assets",
           :updateSelector => "[type=submit]"
         }
 
         output_buffer = ActiveSupport::SafeBuffer.new
         output_buffer << instance_tag.to_text_area_tag(options)
-        output_buffer << javascript_tag(render :partial => 'effective_rte/editor', :locals => {:dom_id => hash['id'], :opts => javascript_options})
+        output_buffer << (render :partial => 'effective_rte/editor', :locals => {:dom_id => hash['id'], :opts => javascript_options})
       end
     end
   end
