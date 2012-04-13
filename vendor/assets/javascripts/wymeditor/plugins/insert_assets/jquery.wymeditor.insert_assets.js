@@ -56,7 +56,7 @@ WymInsertAssets.prototype.insert_assets = function() {
 
   var dialog_frame = $(
     "<div title='Insert Asset'>" +
-      "<iframe id='wym_insert_asset_iframe' src=" + this._options.dialog_url + " width='100%' height='100%' marginWidth='0' marginHeight='0' frameBorder='0' scrolling='auto' title='Insert Asset'></iframe>" +
+      "<iframe id='wym_insert_asset_iframe' src='" + this._options.dialog_url + "' width='100%' height='100%' marginWidth='0' marginHeight='0' frameBorder='0' scrolling='auto' title='Insert Asset'></iframe>" +
     "</div>");
 
   window_height = ($(window).height() * 0.85);
