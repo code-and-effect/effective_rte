@@ -7,7 +7,7 @@ module EffectiveRte
   module Helpers
     autoload :ViewHelper, 'effective_rte/helpers/view_helper'
     autoload :FormHelper, 'effective_rte/helpers/form_helper'
-    autoload :FormBuilder, 'effective_Rte/helpers/form_builder'
+    autoload :FormBuilder, 'effective_rte/helpers/form_builder'
   end
 
 end
