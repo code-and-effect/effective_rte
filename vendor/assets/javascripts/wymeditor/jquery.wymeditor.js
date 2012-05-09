@@ -5514,6 +5514,7 @@ WYMeditor.editor.prototype.dialog = function (dialogType, dialogFeatures, bodyHt
 */
 WYMeditor.editor.prototype.toggleHtml = function () {
     jQuery(this._box).find(this._options.htmlSelector).toggle();
+    jQuery(this._box).find('.wym_iframe').toggle();         // Added Matt Riemer AgileStyle.  Toggle the wym_iframe
 };
 
 WYMeditor.editor.prototype.uniqueStamp = function () {
