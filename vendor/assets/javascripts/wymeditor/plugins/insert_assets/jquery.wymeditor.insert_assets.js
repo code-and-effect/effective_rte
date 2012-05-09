@@ -23,7 +23,7 @@ function WymInsertAssets(options, wym) {
     sUrl: wym._options.basePath + "plugins/insert_assets/insert_assets.php",
     sButtonHtml: "" +
       "<li class='wym_tools_insert_asset'>" +
-        "<a name='InsertAsset' href='#'style='background-image: url(" + btn_url +")'>Insert an Asset</a>" +
+        "<a name='InsertAsset' title='Insert Asset' href='#'style='background-image: url(" + btn_url +")'>Insert an Asset</a>" +
       "</li>",
 
     sButtonSelector: "li.wym_tools_insert_asset a"
@@ -73,9 +73,14 @@ WymInsertAssets.prototype.insert_assets = function() {
 
   $('#wym_insert_asset_iframe', dialog_frame).on('load', function() {
     $(this).contents().find('a.asset-insertable').on("click",
-      function(event) { wym._exec(WYMeditor.INSERT_IMAGE, $(this).data("asset"));
-      $(this).effect("highlight", { color: "#000000"}, 1000);
-      event.preventDefault();
+      function(event) {
+        if($(this).data("file") == true) {
+          wym._exec(WYMeditor.INSERT_HTML, '<a href="' + $(this).data("asset") + '">' + $(this).data("title") + '</a>');
+        } else {
+          wym._exec(WYMeditor.INSERT_IMAGE, $(this).data("asset"));
+        }
+
+        event.preventDefault();
     });
   });
 };
