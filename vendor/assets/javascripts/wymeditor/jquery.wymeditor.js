@@ -444,8 +444,7 @@ jQuery.fn.wymeditor = function (options) {
             {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
             {'name': 'Paste', 'title': 'Paste_From_Word',
                 'css': 'wym_tools_paste'},
-            {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'},
-            {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'}
+            {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
         ],
 
         containersHtml: String() +
