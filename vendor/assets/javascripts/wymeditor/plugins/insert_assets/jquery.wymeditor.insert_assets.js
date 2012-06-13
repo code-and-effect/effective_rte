@@ -9,7 +9,6 @@
     *
     * File Name:
     *        jquery.wymeditor.insert_assets.js
-    *        HTML Tidy plugin for WYMeditor
     *
     * File Authors:
     *   Matt Riemer, Code and Effect Inc.

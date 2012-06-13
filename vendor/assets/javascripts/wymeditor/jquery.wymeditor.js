@@ -566,7 +566,7 @@ jQuery.fn.wymeditor = function (options) {
 
         dialogLinkHtml: String() +
             '<body class="wym_dialog wym_dialog_link" ' +
-                    ' onload="WYMeditor.INIT_DIALOG(' + WYMeditor.INDEX + ')">' +
+                    ' onload="WYMeditor.INIT_DIALOG(' + WYMeditor.INDEX + ');">' +
                 '<form>' +
                     '<fieldset>' +
                         '<input type="hidden" class="wym_dialog_type" ' +
@@ -817,7 +817,6 @@ WYMeditor.computeJqueryPath = function () {
 /********** DIALOGS **********/
 
 WYMeditor.INIT_DIALOG = function (index) {
-
     var wym = window.opener.WYMeditor.INSTANCES[index],
         doc = window.document,
         selected = wym.selected(),
@@ -872,8 +871,8 @@ WYMeditor.INIT_DIALOG = function (index) {
 
         var sUrl = jQuery(wym._options.hrefSelector).val(),
             link;
-        if (sUrl.length > 0) {
 
+        if (sUrl.length > 0) {
             if (selected[0] && selected[0].tagName.toLowerCase() === WYMeditor.A) {
                 link = selected;
             } else {

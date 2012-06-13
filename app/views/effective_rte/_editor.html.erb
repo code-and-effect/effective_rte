@@ -2,8 +2,11 @@
   $('#<%= dom_id %>').wymeditor(
     {<%= raw opts.to_json[1..-2] %>,
       postInit: function(wym) {
-        wymInsertAssets = wym.insert_assets({"dialog_url" : "<%= opts[:assetDialogUrl] %>"});
+        var wymInsertAssets = wym.insert_assets({"dialog_url" : "<%= opts[:assetDialogUrl] %>"});
         wymInsertAssets.init(wym);
+
+        var wymHtmlCleanup = wym.html_cleanup();
+        wymHtmlCleanup.init(wym);
       }
     }
   );
