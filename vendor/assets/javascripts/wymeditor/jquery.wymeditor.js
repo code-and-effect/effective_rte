@@ -363,11 +363,11 @@ jQuery.fn.wymeditor = function (options) {
 
         html:       "",
         basePath:   false,
-        skinPath:    false,
+        skinPath:   false,
         wymPath:    false,
         iframeBasePath: false,
         jQueryPath: false,
-        styles: false,
+        styles:     false,
         stylesheet: false,
         skin:       "default",
         initSkin:   true,
@@ -395,8 +395,7 @@ jQuery.fn.wymeditor = function (options) {
                 "</div>" +
             "</div>",
 
-        logoHtml: String() +
-            '',
+        logoHtml: '',
 
         iframeHtml: String() +
             '<div class="wym_iframe wym_section">' +
@@ -566,7 +565,7 @@ jQuery.fn.wymeditor = function (options) {
 
         dialogLinkHtml: String() +
             '<body class="wym_dialog wym_dialog_link" ' +
-                    ' onload="WYMeditor.INIT_DIALOG(' + WYMeditor.INDEX + ');">' +
+                    ' onload="WYMeditor.INIT_DIALOG(' + WYMeditor.INDEX + ')">' +
                 '<form>' +
                     '<fieldset>' +
                         '<input type="hidden" class="wym_dialog_type" ' +
@@ -817,6 +816,7 @@ WYMeditor.computeJqueryPath = function () {
 /********** DIALOGS **********/
 
 WYMeditor.INIT_DIALOG = function (index) {
+
     var wym = window.opener.WYMeditor.INSTANCES[index],
         doc = window.document,
         selected = wym.selected(),
@@ -871,8 +871,8 @@ WYMeditor.INIT_DIALOG = function (index) {
 
         var sUrl = jQuery(wym._options.hrefSelector).val(),
             link;
-
         if (sUrl.length > 0) {
+
             if (selected[0] && selected[0].tagName.toLowerCase() === WYMeditor.A) {
                 link = selected;
             } else {
@@ -5512,7 +5512,6 @@ WYMeditor.editor.prototype.dialog = function (dialogType, dialogFeatures, bodyHt
 */
 WYMeditor.editor.prototype.toggleHtml = function () {
     jQuery(this._box).find(this._options.htmlSelector).toggle();
-    jQuery(this._box).find('.wym_iframe').toggle();         // Added Matt Riemer AgileStyle.  Toggle the wym_iframe
 };
 
 WYMeditor.editor.prototype.uniqueStamp = function () {

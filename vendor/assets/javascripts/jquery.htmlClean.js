@@ -195,8 +195,6 @@ Use and distibution http://www.opensource.org/licenses/bsd-license.php
         allowedAttributes: [],
         // array of attribute names to remove on all elements in addition to those not in tagAttributes e.g ["width", "height"]
         removeAttrs: [],
-        // array of [className], [optional array of allowed on elements] e.g. [["aClass"], ["anotherClass", ["p", "dl"]]]
-        allowedClasses: [],
         // format the result
         format: false,
         // format indent to start on
@@ -241,18 +239,6 @@ Use and distibution http://www.opensource.org/licenses/bsd-license.php
                     var m = RegExp(/^(['"]?)(.*?)['"]?$/).exec(this.value);
                     var value = m[2];
                     var valueQuote = m[1] || "'";
-
-                    // check for classes allowed
-                    if (this.name == "class") {
-                        value =
-                            $.grep(value.split(" "), function (c) {
-                                return $.grep(options.allowedClasses, function (a) {
-                                    return a[0] == c && (a.length == 1 || $.inArray(element.tag.name, a[1]) > -1);
-                                }).length > 0;
-                            })
-                            .join(" ");
-                        valueQuote = "'";
-                    }
 
                     if (value != null && (value.length > 0 || $.inArray(this.name, element.tag.requiredAttributes) > -1)) {
                         output.push(" ");
