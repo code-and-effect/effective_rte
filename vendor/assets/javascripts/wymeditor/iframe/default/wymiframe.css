@@ -47,6 +47,8 @@
   blockquote    { margin-left: 30px; }
   pre           { background-color:transparent; border: 1px solid white; }
 
+  div.carousel  { border: 2px solid blue; background: #FFFFFF no-repeat 2px 2px; padding: 8px 5px 5px; margin:10px; }
+
 /* Gecko min height fix */
   td            { height: 1.6em; }
 
@@ -60,6 +62,7 @@
   h6        { background-image: url(lbl-h6.png); }
   blockquote{ background-image: url(lbl-blockquote.png); }
   pre       { background-image: url(lbl-pre.png); }
+  div.carousel { background-image: url(lbl-carousel.png); }
 
 /* specific HTML elements */
   caption   { text-align: left; }

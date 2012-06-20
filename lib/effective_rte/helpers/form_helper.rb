@@ -20,9 +20,8 @@ module EffectiveRte
           :wymPath => "/assets/wymeditor/jquery.wymeditor.js",
           :jQueryPath => "/assets/jquery.js",
           :assetDialogUrl => "/admin/assets",
-          :updateSelector => "[type=submit]",
-          :editorStyles => "[{'name': '.carousel', 'css': 'color: red; border: 2px solid #ccc;'}]",
-          :classesItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
+          :classItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
+#          :editorStyles => "[{'name': '.carousel', 'css': 'color: red; border: 2px solid #ccc;'}]"
         }
 
         output_buffer = ActiveSupport::SafeBuffer.new

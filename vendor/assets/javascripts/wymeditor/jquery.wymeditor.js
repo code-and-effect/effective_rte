@@ -194,6 +194,7 @@ jQuery.extend(WYMeditor, {
     H6                  : "h6",
     PRE                 : "pre",
     BLOCKQUOTE          : "blockquote",
+    CAROUSEL            : "carousel",
     A                   : "a",
     BR                  : "br",
     IMG                 : "img",
@@ -232,7 +233,7 @@ jQuery.extend(WYMeditor, {
 
     // Containers that we allow at the root of the document (as a direct child
     // of the body tag)
-    MAIN_CONTAINERS : ["p",  "h1",  "h2",  "h3", "h4", "h5", "h6", "pre", "blockquote"],
+    MAIN_CONTAINERS : ["p",  "h1",  "h2",  "h3", "h4", "h5", "h6", "pre", "blockquote", 'div'],
 
     // All block (as opposed to inline) tags
     BLOCKS : ["address", "blockquote", "div", "dl",
@@ -246,7 +247,7 @@ jQuery.extend(WYMeditor, {
     BLOCKING_ELEMENTS : ["table", "blockquote", "pre"],
 
     // The remaining `MAIN_CONTAINERS` that are not considered `BLOCKING_ELEMENTS`
-    NON_BLOCKING_ELEMENTS : ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
+    NON_BLOCKING_ELEMENTS : ["p", "h1", "h2", "h3", "h4", "h5", "h6", 'div'],
 
     // The elements that are allowed to be turned in to lists. If an item in
     // this array isn't in the MAIN_CONTAINERS array, then its contents will be
@@ -470,9 +471,9 @@ jQuery.fn.wymeditor = function (options) {
             {'name': 'H5', 'title': 'Heading_5', 'css': 'wym_containers_h5'},
             {'name': 'H6', 'title': 'Heading_6', 'css': 'wym_containers_h6'},
             {'name': 'PRE', 'title': 'Preformatted', 'css': 'wym_containers_pre'},
-            {'name': 'BLOCKQUOTE', 'title': 'Blockquote',
-                'css': 'wym_containers_blockquote'},
-            {'name': 'TH', 'title': 'Table_Header', 'css': 'wym_containers_th'}
+            {'name': 'BLOCKQUOTE', 'title': 'Blockquote', 'css': 'wym_containers_blockquote'},
+            {'name': 'TH', 'title': 'Table_Header', 'css': 'wym_containers_th'},
+            {'name': 'CAROUSEL', 'title': 'Image Carousel', 'css': 'wym_containers_carousel'}
         ],
 
         classesHtml: String() +
@@ -490,12 +491,10 @@ jQuery.fn.wymeditor = function (options) {
                 '</a>' +
             '</li>',
 
-        classesItems:      [],
-        statusHtml: String() +
-            '<div class="wym_status wym_section">' +
-                '<h2>{Status}</h2>' +
-            '</div>',
-
+        classesItems:      [
+            {'name': 'date', 'title': 'PARA: Date', 'expr': 'p'}
+        ],
+        statusHtml: '',
         htmlHtml: String() +
             '<div class="wym_html wym_section">' +
                 '<h2>{Source_Code}</h2>' +
@@ -539,8 +538,8 @@ jQuery.fn.wymeditor = function (options) {
         dialogPasteSelector:   ".wym_dialog_paste",
         dialogPreviewSelector: ".wym_dialog_preview",
 
-        updateSelector:    ".wymupdate",
-        updateEvent:       "click",
+        updateSelector:    "form",
+        updateEvent:       "submit",
 
         dialogFeatures:    "menubar=no,titlebar=no,toolbar=no,resizable=no" +
             ",width=560,height=300,top=0,left=0",
@@ -4822,9 +4821,9 @@ WYMeditor.editor.prototype.bindEvents = function () {
     });
 
     // Handle update event on update element
-    jQuery(this._options.updateSelector).bind(this._options.updateEvent, function () {
-        wym.update();
-    });
+    jQuery(this._options.updateSelector).on(this._options.updateEvent, function () {
+        wym._element.html(wym.xhtml());
+    }
 };
 
 WYMeditor.editor.prototype.ready = function () {
@@ -5103,7 +5102,8 @@ WYMeditor.editor.prototype.container = function (sType) {
             WYMeditor.H5,
             WYMeditor.H6,
             WYMeditor.PRE,
-            WYMeditor.BLOCKQUOTE
+            WYMeditor.BLOCKQUOTE,
+            WYMeditor.CAROUSEL
         ];
         container = this.findUp(this.container(), aTypes);
 
@@ -5183,6 +5183,12 @@ WYMeditor.editor.prototype.findUp = function (node, filter) {
         return null;
     }
 
+    if(node.nodeName == 'DIV') {
+        for(var x = 0; x < node.attributes.length; x++) {
+            if(node.attributes[x].nodeValue == 'carousel') return node;
+        }
+    }
+
     if (node.nodeName === "#text") {
         // For text nodes, we need to look from the nodes container object
         node = node.parentNode;
@@ -5230,11 +5236,21 @@ WYMeditor.editor.prototype.findUp = function (node, filter) {
     Switch the type of the given `node` to type `sType`
 */
 WYMeditor.editor.prototype.switchTo = function (node, sType) {
-    var newNode = this._doc.createElement(sType),
-        html = jQuery(node).html();
+    var NewNode;
 
+    if(sType == 'CAROUSEL')
+        newNode = this._doc.createElement('div');
+    else
+        newNode = this._doc.createElement(sType);
+
+    html = jQuery(node).html();
     node.parentNode.replaceChild(newNode, node);
-    jQuery(newNode).html(html);
+
+
+    if(sType == 'CAROUSEL')
+        jQuery(newNode).addClass('carousel').html(html);
+    else
+        jQuery(newNode).html(html);
 
     this.setFocusToNode(newNode);
 };
