@@ -4823,7 +4823,7 @@ WYMeditor.editor.prototype.bindEvents = function () {
     // Handle update event on update element
     jQuery(this._options.updateSelector).on(this._options.updateEvent, function () {
         wym._element.html(wym.xhtml());
-    }
+    });
 };
 
 WYMeditor.editor.prototype.ready = function () {
