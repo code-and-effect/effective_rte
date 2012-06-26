@@ -22,7 +22,7 @@ function WymInsertAssets(options, wym) {
     sUrl: wym._options.basePath + "plugins/insert_assets/insert_assets.php",
     sButtonHtml: "" +
       "<li class='wym_tools_insert_asset'>" +
-        "<a name='InsertAsset' title='Insert Asset' href='#'style='background-image: url(" + btn_url +")'>Insert an Asset</a>" +
+        "<a name='InsertAsset' title='Insert Asset' href='#'>Insert an Asset</a>" +
       "</li>",
 
     sButtonSelector: "li.wym_tools_insert_asset a"
