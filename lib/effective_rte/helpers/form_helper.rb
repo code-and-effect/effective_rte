@@ -16,11 +16,8 @@ module EffectiveRte
         instance_tag.send(:add_default_name_and_id, hash)
 
         javascript_options = {
-          :skin => "default",
-          :wymPath => "/assets/wymeditor/jquery.wymeditor.js",
-          :jQueryPath => "/assets/jquery.js",
           :assetDialogUrl => "/admin/assets",
-          :classItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
+          :classesItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
 #          :editorStyles => "[{'name': '.carousel', 'css': 'color: red; border: 2px solid #ccc;'}]"
         }
 
