@@ -452,7 +452,7 @@ jQuery.fn.wymeditor = function (options) {
 
         containersItemHtml: String() +
             '<li class="' + WYMeditor.CONTAINER_CLASS + '">' +
-                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '" title="' + WYMeditor.CONTAINER_TITLE + '">' +
                     WYMeditor.CONTAINER_TITLE +
                 '</a>' +
             '</li>',
@@ -481,7 +481,7 @@ jQuery.fn.wymeditor = function (options) {
 
         classesItemHtml: String() +
             '<li class="wym_classes_' + WYMeditor.CLASS_NAME + '">' +
-                '<a href="#" name="' + WYMeditor.CLASS_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CLASS_NAME + '" title="' + WYMeditor.CLASS_TITLE + '">' +
                     WYMeditor.CLASS_TITLE +
                 '</a>' +
             '</li>',
