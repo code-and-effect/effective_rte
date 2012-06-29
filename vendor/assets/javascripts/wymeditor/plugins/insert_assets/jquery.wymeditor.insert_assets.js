@@ -73,12 +73,7 @@ WymInsertAssets.prototype.insert_assets = function() {
   $('#wym_insert_asset_iframe', dialog_frame).on('load', function() {
     $(this).contents().find('a.asset-insertable').on("click",
       function(event) {
-        if($(this).data("file") == true) {
-          wym._exec(WYMeditor.INSERT_HTML, '<a href="' + $(this).data("asset") + '">' + $(this).data("title") + '</a>');
-        } else {
-          wym._exec(WYMeditor.INSERT_IMAGE, $(this).data("asset"));
-        }
-
+        wym._exec(WYMeditor.INSERT_HTML, $(this).data("asset"));
         event.preventDefault();
     });
   });
