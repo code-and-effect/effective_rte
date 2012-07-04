@@ -29,15 +29,13 @@ WYMeditor.editor.prototype.html_cleanup = function(options) {
 WymHtmlCleanup.prototype.init = function() {
     var html_cleanup = this;
 
+    // Override WymEditor default function
+    WYMeditor.editor.prototype.xhtml = function () {
+        return style_html(this.html().replace(/<br>/gi, ''), {'indent_size' : 1, 'max_char' : 9999, 'indent_char' : '\t'});
+    };
+
     // Override the default toggleHtml action
     WYMeditor.editor.prototype.toggleHtml = function () {
-        if(jQuery(this._box).find('.wym_iframe').is(':hidden') == false) {
-            var wym = this._wym;
-            var html = wym.xhtml();
-            var cleanedHtml = $.htmlClean(html, {format:true, bodyOnly:false});
-            wym.html(cleanedHtml);
-            wym.update();
-        }
         jQuery(this._box).find(this._options.htmlSelector).toggle();
         jQuery(this._box).find('.wym_iframe').toggle();
     };

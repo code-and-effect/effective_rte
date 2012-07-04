@@ -73,7 +73,13 @@ WymInsertAssets.prototype.insert_assets = function() {
   $('#wym_insert_asset_iframe', dialog_frame).on('load', function() {
     $(this).contents().find('a.asset-insertable').on("click",
       function(event) {
-        wym._exec(WYMeditor.INSERT_HTML, $(this).data("asset"));
+        var raw_html = "" + $(this).data('asset');
+        var raw_object = jQuery("<p>" + raw_html + "</p>");
+        var raw_image = $('img', raw_object);
+
+        if(raw_image.data('upload-file').length > 0) raw_image.addClass('img-still-processing');
+
+        wym._exec(WYMeditor.INSERT_HTML, raw_object.html());
         event.preventDefault();
     });
   });

@@ -20,7 +20,6 @@
 .wym_skin_effective p, .wym_skin_effective h2, .wym_skin_effective h3,
 .wym_skin_effective ul, .wym_skin_effective li { background: none; margin: 0; padding: 0; border-width:0; list-style: none; }
 
-
 /*HIDDEN BY DEFAULT*/
 .wym_skin_effective .wym_area_left  { display: none; }
 .wym_skin_effective .wym_area_right { display: block; }

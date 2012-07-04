@@ -4959,7 +4959,6 @@ WYMeditor.editor.prototype.exec = function (cmd) {
         this.outdent();
         break;
 
-
     default:
         custom_run = false;
         jQuery.each(this._options.customCommands, function () {
