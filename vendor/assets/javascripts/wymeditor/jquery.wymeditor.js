@@ -6965,7 +6965,22 @@ WYMeditor.editor.prototype.listen = function () {
     jQuery(this._doc.body).bind("mousedown", function (e) {
         wym.mousedown(e);
     });
+
+    this.listen_for_image_error();
 };
+
+// IMAGE ERROR
+WYMeditor.editor.prototype.listen_for_image_error = function () {
+//    jQuery('img', this._doc.body).bind("error", function() {
+//        var broken_image = jQuery(this);
+//
+//        if (broken_image.data('upload-file').length > 0) {
+//            broken_image.addClass('img-still-processing');
+//            broken_image.css('background', 'url(' + broken_image.data('upload-file') + ') no-repeat');
+//        }
+//    });
+};
+
 
 WYMeditor.editor.prototype.mousedown = function (evt) {
     // Store the selected image if we clicked an <img> tag
@@ -7123,6 +7138,7 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function (iframe) {
         wym._iframe.contentWindow.event.returnValue = false;
         wym.paste(window.clipboardData.getData("Text"));
     };
+
 
     //callback can't be executed twice, so we check
     if (this._initialized) {

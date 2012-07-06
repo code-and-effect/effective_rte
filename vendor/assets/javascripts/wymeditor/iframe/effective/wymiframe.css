@@ -92,4 +92,13 @@
 /* Spacer BRs shouldn't add much whitespace */
 br { height: 5px; line-height: 5px; }
 
-img.img-still-processing { color: red; background: red; }
+.img-still-processing {
+  display: block;
+  color: darkorange;
+  border-color: darkorange;
+  border-style: dotted;
+  border-width: 2px;
+  min-height: 128px;
+  min-width: 128px;
+}
+
