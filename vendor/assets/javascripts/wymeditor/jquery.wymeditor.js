@@ -6966,20 +6966,22 @@ WYMeditor.editor.prototype.listen = function () {
         wym.mousedown(e);
     });
 
-    this.listen_for_image_error();
+    //this.listen_for_image_error();
 };
 
 // IMAGE ERROR
-WYMeditor.editor.prototype.listen_for_image_error = function () {
-//    jQuery('img', this._doc.body).bind("error", function() {
+//WYMeditor.editor.prototype.listen_for_image_error = function () {
+//    console.log('listening2');
+//    jQuery(this._doc.body).bind("error", function() {
 //        var broken_image = jQuery(this);
+//        console.log('listening lol');
 //
 //        if (broken_image.data('upload-file').length > 0) {
 //            broken_image.addClass('img-still-processing');
 //            broken_image.css('background', 'url(' + broken_image.data('upload-file') + ') no-repeat');
 //        }
 //    });
-};
+//};
 
 
 WYMeditor.editor.prototype.mousedown = function (evt) {
