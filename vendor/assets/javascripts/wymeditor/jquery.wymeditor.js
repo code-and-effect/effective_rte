@@ -458,7 +458,7 @@ jQuery.fn.wymeditor = function (options) {
             '</li>',
 
         containersItems: [
-            // {'name': 'DIV', s':'title': 'Div', 'cs 'wym_containers_div'},
+            {'name': 'DIV', 'title': 'Div', 'css': 'wym_containers_div'},
             {'name': 'P', 'title': 'Paragraph', 'css': 'wym_containers_p'},
             {'name': 'H1', 'title': 'Heading_1', 'css': 'wym_containers_h1'},
             {'name': 'H2', 'title': 'Heading_2', 'css': 'wym_containers_h2'},
