@@ -31,7 +31,8 @@ WymHtmlCleanup.prototype.init = function() {
 
     // Override WymEditor default function
     WYMeditor.editor.prototype.xhtml = function () {
-        return style_html(this.html().replace(/<br>/gi, ''), {'indent_size' : 1, 'max_char' : 9999, 'indent_char' : '\t'});
+        var styled_html = style_html(this.html(), {'indent_size' : 1, 'max_char' : 9999, 'indent_char' : '\t'});
+        return styled_html.replace(/(\s*)<br>(\s*)(<\/)/, '$2$3');
     };
 
     // Override the default toggleHtml action
