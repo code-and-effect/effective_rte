@@ -452,7 +452,7 @@ jQuery.fn.wymeditor = function (options) {
 
         containersItemHtml: String() +
             '<li class="' + WYMeditor.CONTAINER_CLASS + '">' +
-                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '" title="' + WYMeditor.CONTAINER_TITLE + '">' +
                     WYMeditor.CONTAINER_TITLE +
                 '</a>' +
             '</li>',
@@ -481,7 +481,7 @@ jQuery.fn.wymeditor = function (options) {
 
         classesItemHtml: String() +
             '<li class="wym_classes_' + WYMeditor.CLASS_NAME + '">' +
-                '<a href="#" name="' + WYMeditor.CLASS_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CLASS_NAME + '" title="' + WYMeditor.CLASS_TITLE + '">' +
                     WYMeditor.CLASS_TITLE +
                 '</a>' +
             '</li>',
@@ -4959,7 +4959,6 @@ WYMeditor.editor.prototype.exec = function (cmd) {
         this.outdent();
         break;
 
-
     default:
         custom_run = false;
         jQuery.each(this._options.customCommands, function () {
@@ -6966,7 +6965,24 @@ WYMeditor.editor.prototype.listen = function () {
     jQuery(this._doc.body).bind("mousedown", function (e) {
         wym.mousedown(e);
     });
+
+    //this.listen_for_image_error();
 };
+
+// IMAGE ERROR
+//WYMeditor.editor.prototype.listen_for_image_error = function () {
+//    console.log('listening2');
+//    jQuery(this._doc.body).bind("error", function() {
+//        var broken_image = jQuery(this);
+//        console.log('listening lol');
+//
+//        if (broken_image.data('upload-file').length > 0) {
+//            broken_image.addClass('img-still-processing');
+//            broken_image.css('background', 'url(' + broken_image.data('upload-file') + ') no-repeat');
+//        }
+//    });
+//};
+
 
 WYMeditor.editor.prototype.mousedown = function (evt) {
     // Store the selected image if we clicked an <img> tag
@@ -7124,6 +7140,7 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function (iframe) {
         wym._iframe.contentWindow.event.returnValue = false;
         wym.paste(window.clipboardData.getData("Text"));
     };
+
 
     //callback can't be executed twice, so we check
     if (this._initialized) {
