@@ -34,7 +34,7 @@
 
 /*WYM_BOX*/
 .wym_box                      { display: inline-block; width: 100%;}
-.wym_skin_effective           { border: 1px solid gray; background: #f2f2f2; padding: 5px; margin-top: 10px; }
+.wym_skin_effective           { border: 1px solid gray; background: #f2f2f2; padding: 5px; margin-top: 0; }
 .wym_skin_effective:after     { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 * html .wym_skin_effective    { height: 1%;}
 
@@ -185,4 +185,4 @@ a.wym_wymeditor_link        { text-indent: -9999px; float: right; display: block
 
 .wym_skin_effective .wym_buttons li.wym_tools_html { float: right; }
 
-.page_template_meta { top: 45px ;}
+.page_template_meta { top: 35px ;}
