@@ -700,7 +700,7 @@ jQuery.fn.wymeditor = function (options) {
     // Effective RTE 'Default' options
         skin: 'effective',
         wymPath: "/assets/wymeditor/jquery.wymeditor.js",
-        jQueryPath: "/assets/jquery.js",
+        jQueryPath: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js",
         iframeBasePath: "/assets/wymeditor/iframe/effective/",
         logoHtml: '',
         updateSelector: 'form',
