@@ -895,23 +895,11 @@ WYMeditor.INIT_DIALOG = function (index) {
     jQuery(wym._options.dialogLinkSelector + " " +
             wym._options.submitSelector).submit(function () {
 
-        var sUrl = jQuery(wym._options.hrefSelector).val(),
-            link;
+        var sUrl = jQuery(wym._options.hrefSelector).val();
+
         if (sUrl.length > 0) {
-
-            if (selected[0] && selected[0].tagName.toLowerCase() === WYMeditor.A) {
-                link = selected;
-            } else {
-                wym._exec(WYMeditor.CREATE_LINK, sStamp);
-                link = jQuery("a[href=" + sStamp + "]", wym._doc.body);
-
-                var link_html = "<a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>";
-                wym._exec(WYMeditor.INSERT_HTML, link_html);
-            }
-
-            link.attr(WYMeditor.HREF, sUrl);
-            link.attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val());
-            link.attr(WYMeditor.REL, jQuery(wym._options.relSelector).val());
+            var link_html = "<a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>";
+            wym._exec(WYMeditor.INSERT_HTML, link_html);
         }
         window.close();
     });
