@@ -904,6 +904,9 @@ WYMeditor.INIT_DIALOG = function (index) {
             } else {
                 wym._exec(WYMeditor.CREATE_LINK, sStamp);
                 link = jQuery("a[href=" + sStamp + "]", wym._doc.body);
+
+                var link_html = "<a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>";
+                wym._exec(WYMeditor.INSERT_HTML, link_html);
             }
 
             link.attr(WYMeditor.HREF, sUrl);
