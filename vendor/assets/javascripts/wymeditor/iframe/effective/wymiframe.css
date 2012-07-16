@@ -92,7 +92,9 @@
 /* Spacer BRs shouldn't add much whitespace */
 br { height: 5px; line-height: 5px; }
 
-img.img-still-processing {
+video { background-image: url(/assets/mime-types/video.png);}
+
+.still-processing {
   display: block;
   color: darkorange;
   border-color: darkorange;
@@ -100,5 +102,11 @@ img.img-still-processing {
   border-width: 2px;
   min-height: 128px;
   min-width: 128px;
+}
+
+video.still-processing {
+  height: 128px;
+  width: 128px;
+
 }
 
