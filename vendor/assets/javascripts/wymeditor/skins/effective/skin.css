@@ -102,6 +102,7 @@
 .wym_skin_effective .wym_buttons li.wym_tools_paste a         { background: url(icons/clipboard-paste-word.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_html a          { background: url(icons/edit-code.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_preview a       { background: url(icons/eye.png) 50% 50% no-repeat; }
+.wym_skin_effective .wym_buttons li.wym_tools_line_break a    { background: url(icons/insert-br.png) 50% 50% no-repeat; }
 
 .wym_skin_effective li.wym_classes_carousel a    { background: url(icons/slides-stack.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_insert_asset a  { background: url(icons/image.png) 50% 50% no-repeat; }
@@ -139,6 +140,12 @@ a.wym_wymeditor_link        { text-indent: -9999px; float: right; display: block
 .wym_skin_effective .wym_tools_outdent,
 .wym_skin_effective .wym_tools_paste,
 .wym_skin_effective .wym_tools_redo {
+  border-right: solid 1px gray;
+  margin-right: 8px;
+  padding-right: 8px;
+}
+
+.wym_skin_effective .wym_tools_line_break {
   border-right: solid 1px gray;
   margin-right: 8px;
   padding-right: 8px;

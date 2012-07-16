@@ -230,6 +230,7 @@ jQuery.extend(WYMeditor, {
     UNLINK              : "Unlink",
     INSERT_UNORDEREDLIST: "InsertUnorderedList",
     INSERT_ORDEREDLIST  : "InsertOrderedList",
+    LINE_BREAK          : "LineBreak",
 
     // Containers that we allow at the root of the document (as a direct child
     // of the body tag)
@@ -421,26 +422,6 @@ jQuery.fn.wymeditor = function (options) {
                     WYMeditor.TOOL_TITLE +
                 '</a>' +
             '</li>',
-
-        toolsItems: [
-            {'name': 'Bold', 'title': 'Strong', 'css': 'wym_tools_strong'},
-            {'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'},
-            {'name': 'Superscript', 'title': 'Superscript', 'css': 'wym_tools_superscript'},
-            {'name': 'Subscript', 'title': 'Subscript', 'css': 'wym_tools_subscript'},
-            {'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'},
-            {'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'},
-            {'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'},
-            {'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'},
-            {'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'},
-            {'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'},
-            {'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'},
-            {'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'},
-            {'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'},
-            {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
-            {'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'},
-            {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'},
-            {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'}
-        ],
 
         containersHtml: String() +
             '<div class="wym_containers wym_section">' +
@@ -706,25 +687,34 @@ jQuery.fn.wymeditor = function (options) {
         updateSelector: 'form',
         updateEvent: 'submit',
 
+        classesItems: [],
+//            {name: 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}
+//        ],
+
+// :classesItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
+
+//        classesItems: [
+//            {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'},
+//            {name: 'image-align', rules:['left', 'right'], join: '-'},
+//            {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}
+//        ],
+
         toolsItems: [
+            {'name': 'LineBreak', 'title': 'Line_Break', 'css': 'wym_tools_line_break'},
             {'name': 'Bold', 'title': 'Strong', 'css': 'wym_tools_strong'},
             {'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'},
             {'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'},
             {'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'},
-            // {'name': 'Superscript', 'title': 'Superscript', 'css': 'wym_tools_superscript'},
-            // {'name': 'Subscript', 'title': 'Subscript', 'css': 'wym_tools_subscript'},
             {'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'},
             {'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'},
             {'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'},
             {'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'},
             {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
             {'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'},
-            // {'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'},
             {'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'},
             {'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'},
             {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'},
             {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
-            // {'name': 'InsertAsset', 'title': 'Preview', 'css': 'wym_tools_insert_asset'}
         ]
 
     }, options);
@@ -900,6 +890,7 @@ WYMeditor.INIT_DIALOG = function (index) {
         if (sUrl.length > 0) {
             var link_html = "<a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>";
             wym._exec(WYMeditor.INSERT_HTML, link_html);
+            wym.update();
         }
         window.close();
     });
@@ -4948,6 +4939,11 @@ WYMeditor.editor.prototype.exec = function (cmd) {
 
     case WYMeditor.OUTDENT:
         this.outdent();
+        break;
+
+    case WYMeditor.LINE_BREAK:
+        this.insert('<br>');
+        this.update();
         break;
 
     default:
