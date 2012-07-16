@@ -92,7 +92,11 @@
 /* Spacer BRs shouldn't add much whitespace */
 br { height: 5px; line-height: 5px; }
 
-video { background-image: url(/assets/mime-types/video.png);}
+video {
+  background-image: url(/assets/mime-types/video.png);
+  height: 128px;
+  width: 128px;
+}
 
 .still-processing {
   display: block;
@@ -103,10 +107,3 @@ video { background-image: url(/assets/mime-types/video.png);}
   min-height: 128px;
   min-width: 128px;
 }
-
-video.still-processing {
-  height: 128px;
-  width: 128px;
-
-}
-
