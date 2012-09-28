@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "effective_rte"
-  s.version     = "0.3"
+  s.version     = "0.3.1"
   s.authors     = ['AgileStyle Inc.']
   s.email       = ['info@agilestyle.com']
   s.homepage    = "http://github.com/AgileStyleInc/effective_rte"
