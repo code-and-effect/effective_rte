@@ -688,16 +688,6 @@ jQuery.fn.wymeditor = function (options) {
         updateEvent: 'submit',
 
         classesItems: [],
-//            {name: 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}
-//        ],
-
-// :classesItems => "[{'name' : 'carousel', 'title': 'PARA: Carousel', 'expr': 'p'}]"
-
-//        classesItems: [
-//            {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'},
-//            {name: 'image-align', rules:['left', 'right'], join: '-'},
-//            {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}
-//        ],
 
         toolsItems: [
             {'name': 'LineBreak', 'title': 'Line_Break', 'css': 'wym_tools_line_break'},
@@ -885,12 +875,26 @@ WYMeditor.INIT_DIALOG = function (index) {
     jQuery(wym._options.dialogLinkSelector + " " +
             wym._options.submitSelector).submit(function () {
 
-        var sUrl = jQuery(wym._options.hrefSelector).val();
-
+        var sUrl = jQuery(wym._options.hrefSelector).val(),
+            link;
         if (sUrl.length > 0) {
-            var link_html = "<a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>";
-            wym._exec(WYMeditor.INSERT_HTML, link_html);
-            wym.update();
+
+            if (selected[0] && selected[0].tagName.toLowerCase() === WYMeditor.A) {
+                link = selected;
+            } else {
+                wym._exec(WYMeditor.CREATE_LINK, sStamp);
+                link = jQuery("a[href=" + sStamp + "]", wym._doc.body);
+            }
+
+            link.attr(WYMeditor.HREF, sUrl);
+            link.attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val());
+            link.attr(WYMeditor.REL, jQuery(wym._options.relSelector).val());
+
+            if(link.html() == null) {
+                var link_html = " <a href='" + sUrl + "' rel='" + jQuery(wym._options.relSelector).val() + "'>" + jQuery(wym._options.titleSelector).val() + "</a>&nbsp;";
+                wym._exec(WYMeditor.INSERT_HTML, link_html);
+                wym.update();
+            }
         }
         window.close();
     });
@@ -4775,6 +4779,7 @@ WYMeditor.editor.prototype.init = function () {
 
     this.loadSkin();
 };
+
 
 /**
     WYMeditor.editor.bindEvents
