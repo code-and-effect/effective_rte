@@ -77,7 +77,10 @@ WymInsertAssets.prototype.insert_assets = function() {
         var raw_object = jQuery("<p>" + raw_html + "</p>");
         var raw_image = $('img', raw_object);
 
-        if(raw_image.attr("data-upload-file") != undefined) raw_image.addClass('img-still-processing');
+        if(raw_image.attr("data-upload-file") != undefined) {
+          raw_image.css('background-image', 'url(' + raw_image.data('upload-file') + ')');
+          raw_image.addClass('still-processing');
+        }
 
         wym._exec(WYMeditor.INSERT_HTML, raw_object.html());
         event.preventDefault();
