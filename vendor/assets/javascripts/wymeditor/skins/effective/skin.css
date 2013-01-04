@@ -100,16 +100,32 @@
 .wym_skin_effective .wym_buttons li.wym_tools_image a         { background-position: 0 -121px; }
 .wym_skin_effective .wym_buttons li.wym_tools_table a         { background: url(icons/table.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_paste a         { background: url(icons/clipboard-paste-word.png) 50% 50% no-repeat; }
-.wym_skin_effective .wym_buttons li.wym_tools_html a          { background: url(icons/edit-code.png) 50% 50% no-repeat; }
+.wym_skin_effective .wym_buttons li.wym_tools_html a          { background-position: 0 -193px;}
 .wym_skin_effective .wym_buttons li.wym_tools_preview a       { background: url(icons/eye.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_line_break a    { background: url(icons/insert-br.png) 50% 50% no-repeat; }
-
-.wym_skin_effective li.wym_classes_carousel a    { background: url(icons/slides-stack.png) 50% 50% no-repeat; }
 .wym_skin_effective .wym_buttons li.wym_tools_insert_asset a  { background: url(icons/image.png) 50% 50% no-repeat; }
 
-/* OUR CUSTOM ICONS */
-.wym_skin_effective .wym_buttons li.wym_tools_h1 a      { background: url(tools_h1.png) no-repeat; text-indent: -9999px;}
+/* CLASSES */
+.wym_skin_effective div.wym_classes {
+  border-left: solid 1px gray;
+  border-right: solid 1px gray;
+  margin: 0px 8px 0px 8px;
+  padding: 0px 8px 0px 8px;
+}
 
+.wym_skin_effective .wym_tools_emphasis,
+.wym_skin_effective .wym_tools_unlink,
+.wym_skin_effective .wym_tools_outdent,
+.wym_skin_effective .wym_tools_paste,
+.wym_skin_effective .wym_tools_redo {
+  border-right: solid 1px gray;
+  margin-right: 8px;
+  padding-right: 8px;
+}
+
+.wym_skin_effective li.wym_classes_carousel a         { background: url(icons/slides-stack.png) 50% 50% no-repeat; }
+.wym_skin_effective li.wym_classes_align-right a  { background: url(icons.png) no-repeat; text-indent: -9999px; background-position: 0 -289px; }
+.wym_skin_effective li.wym_classes_align-left a   { background: url(icons.png) no-repeat; text-indent: -9999px; background-position: 0 -312px; }
 
 /*DECORATION*/
 .wym_skin_effective .wym_section h2             { background: #ddd; border: solid gray; border-width: 0 0 1px;}
@@ -134,22 +150,6 @@
 
 /*WYMEDITOR_LINK*/
 a.wym_wymeditor_link        { text-indent: -9999px; float: right; display: block; width: 50px; height: 15px; background: url(../wymeditor_icon.png);  overflow: hidden; text-decoration: none;  }
-
-.wym_skin_effective .wym_tools_unlink,
-.wym_skin_effective .wym_classes_carousel,
-.wym_skin_effective .wym_tools_outdent,
-.wym_skin_effective .wym_tools_paste,
-.wym_skin_effective .wym_tools_redo {
-  border-right: solid 1px gray;
-  margin-right: 8px;
-  padding-right: 8px;
-}
-
-.wym_skin_effective .wym_tools_line_break {
-  border-right: solid 1px gray;
-  margin-right: 8px;
-  padding-right: 8px;
-}
 
 .wym_skin_effective .wym_containers,
 .wym_skin_effective .wym_classes {
