@@ -1,10 +1,10 @@
 /*jslint evil: true, indent: 4 */
-/*@version 1.0.0b2 */
+/*@version 1.0.0b3 */
 /**
     WYMeditor
     =========
 
-    version 1.0.0b2
+    version 1.0.0b3
 
     WYMeditor : what you see is What You Mean web-based editor
 
@@ -144,7 +144,7 @@ jQuery.extend(WYMeditor, {
 
 */
 
-    VERSION             : "1.0.0b2",
+    VERSION             : "1.0.0b3",
     INSTANCES           : [],
     STRINGS             : [],
     SKINS               : [],
@@ -423,6 +423,31 @@ jQuery.fn.wymeditor = function (options) {
                 '</a>' +
             '</li>',
 
+        toolsItems: [
+            {'name': 'Bold', 'title': 'Strong', 'css': 'wym_tools_strong'},
+            {'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'},
+            {'name': 'Superscript', 'title': 'Superscript',
+                'css': 'wym_tools_superscript'},
+            {'name': 'Subscript', 'title': 'Subscript',
+                'css': 'wym_tools_subscript'},
+            {'name': 'InsertOrderedList', 'title': 'Ordered_List',
+                'css': 'wym_tools_ordered_list'},
+            {'name': 'InsertUnorderedList', 'title': 'Unordered_List',
+                'css': 'wym_tools_unordered_list'},
+            {'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'},
+            {'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'},
+            {'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'},
+            {'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'},
+            {'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'},
+            {'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'},
+            {'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'},
+            {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
+            {'name': 'Paste', 'title': 'Paste_From_Word',
+                'css': 'wym_tools_paste'},
+            {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'},
+            {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'}
+        ],
+
         containersHtml: String() +
             '<div class="wym_containers wym_section">' +
                 '<h2>{Containers}</h2>' +
@@ -439,7 +464,6 @@ jQuery.fn.wymeditor = function (options) {
             '</li>',
 
         containersItems: [
-            // {'name': 'DIV', 'title': 'Div', 'css': 'wym_containers_div'},
             {'name': 'P', 'title': 'Paragraph', 'css': 'wym_containers_p'},
             {'name': 'H1', 'title': 'Heading_1', 'css': 'wym_containers_h1'},
             {'name': 'H2', 'title': 'Heading_2', 'css': 'wym_containers_h2'},
@@ -448,7 +472,8 @@ jQuery.fn.wymeditor = function (options) {
             {'name': 'H5', 'title': 'Heading_5', 'css': 'wym_containers_h5'},
             {'name': 'H6', 'title': 'Heading_6', 'css': 'wym_containers_h6'},
             {'name': 'PRE', 'title': 'Preformatted', 'css': 'wym_containers_pre'},
-            {'name': 'BLOCKQUOTE', 'title': 'Blockquote', 'css': 'wym_containers_blockquote'},
+            {'name': 'BLOCKQUOTE', 'title': 'Blockquote',
+                'css': 'wym_containers_blockquote'},
             {'name': 'TH', 'title': 'Table_Header', 'css': 'wym_containers_th'}
         ],
 
@@ -467,7 +492,7 @@ jQuery.fn.wymeditor = function (options) {
                 '</a>' +
             '</li>',
 
-        classesItems:      [],
+            classesItms:      [],
         statusHtml: String() +
             '<div class="wym_status wym_section">' +
                 '<h2>{Status}</h2>' +
@@ -676,36 +701,7 @@ jQuery.fn.wymeditor = function (options) {
         postInit: null,
 
         preInitDialog: null,
-        postInitDialog: null,
-
-    // Effective RTE 'Default' options
-        skin: 'effective',
-        wymPath: "/assets/wymeditor/jquery.wymeditor.js",
-        jQueryPath: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js",
-        iframeBasePath: "/assets/wymeditor/iframe/effective/",
-        logoHtml: '',
-        updateSelector: 'form',
-        updateEvent: 'submit',
-
-        classesItems: [],
-
-        toolsItems: [
-            {'name': 'LineBreak', 'title': 'Line_Break', 'css': 'wym_tools_line_break'},
-            {'name': 'Bold', 'title': 'Strong', 'css': 'wym_tools_strong'},
-            {'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'},
-            {'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'},
-            {'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'},
-            {'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'},
-            {'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'},
-            {'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'},
-            {'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'},
-            {'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'},
-            {'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'},
-            {'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'},
-            {'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'},
-            {'name': 'Preview', 'title': 'Preview', 'css': 'wym_tools_preview'},
-            {'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
-        ]
+        postInitDialog: null
 
     }, options);
 
@@ -717,7 +713,7 @@ jQuery.fn.wymeditor = function (options) {
     });
 };
 
-// Enable accessing of wymeditor instances via $.wymeditors
+// Enable accessing of wymeditor instances via jQuery.wymeditors
 jQuery.extend({
     wymeditors: function (i) {
         return WYMeditor.INSTANCES[i];
@@ -4634,7 +4630,7 @@ WYMeditor.editor.prototype.init = function () {
         WymClass = new WYMeditor.WymClassMozilla(this);
     } else if (jQuery.browser.opera) {
         WymClass = new WYMeditor.WymClassOpera(this);
-    } else if (jQuery.browser.safari || jQuery.browser.webkit || jQuery.browser.chrome) {
+    } else {
         WymClass = new WYMeditor.WymClassSafari(this);
     }
 
@@ -4779,7 +4775,6 @@ WYMeditor.editor.prototype.init = function () {
 
     this.loadSkin();
 };
-
 
 /**
     WYMeditor.editor.bindEvents
@@ -4996,7 +4991,7 @@ WYMeditor.editor.prototype.selected = function () {
         caretPos;
 
     if (node) {
-        if ($.browser.msie) {
+        if (jQuery.browser.msie) {
             if (sel.isCollapsed && node.tagName && node.tagName.toLowerCase() === 'body') {
                 // For collapsed selections, we have to use the ghetto "caretPos"
                 // hack to find the selection, otherwise it always says that the
@@ -6957,24 +6952,7 @@ WYMeditor.editor.prototype.listen = function () {
     jQuery(this._doc.body).bind("mousedown", function (e) {
         wym.mousedown(e);
     });
-
-    //this.listen_for_image_error();
 };
-
-// IMAGE ERROR
-//WYMeditor.editor.prototype.listen_for_image_error = function () {
-//    console.log('listening2');
-//    jQuery(this._doc.body).bind("error", function() {
-//        var broken_image = jQuery(this);
-//        console.log('listening lol');
-//
-//        if (broken_image.data('upload-file').length > 0) {
-//            broken_image.addClass('img-still-processing');
-//            broken_image.css('background', 'url(' + broken_image.data('upload-file') + ') no-repeat');
-//        }
-//    });
-//};
-
 
 WYMeditor.editor.prototype.mousedown = function (evt) {
     // Store the selected image if we clicked an <img> tag
@@ -7132,7 +7110,6 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function (iframe) {
         wym._iframe.contentWindow.event.returnValue = false;
         wym.paste(window.clipboardData.getData("Text"));
     };
-
 
     //callback can't be executed twice, so we check
     if (this._initialized) {
