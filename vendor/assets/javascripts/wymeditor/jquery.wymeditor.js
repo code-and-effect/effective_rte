@@ -5345,7 +5345,6 @@ WYMeditor.editor.prototype.update = function () {
 WYMeditor.editor.prototype.fixBodyHtml = function () {
     this.fixDoubleBr();
     this.spaceBlockingElements();
-    this.fixCurrentDiv();
 };
 
 /**
@@ -5445,20 +5444,6 @@ WYMeditor.editor.prototype.fixDoubleBr = function () {
         }
     }
 };
-
-/**
-editor.fixCurrentDiv
-====================
-
-If the caret is currently on a DIV node, for whatever reason,
-change it into a P. FIXME: DIVs shouldn't be created at all in
-the first place.
-*/
-WYMeditor.editor.prototype.fixCurrentDiv = function () {
-    var node = this.selected();
-    if (node && node.tagName.toLowerCase() === 'div')
-      this.switchTo(node, 'P');
-}
 
 /**
     editor.dialog
