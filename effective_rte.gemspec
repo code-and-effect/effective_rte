@@ -4,9 +4,9 @@ $:.push File.expand_path("../lib", __FILE__)
 Gem::Specification.new do |s|
   s.name        = "effective_rte"
   s.version     = "0.3.5"
-  s.authors     = ['AgileStyle Inc.']
-  s.email       = ['info@agilestyle.com']
-  s.homepage    = "http://github.com/AgileStyleInc/effective_rte"
+  s.authors     = ['Code and Effect']
+  s.email       = ['info@codeandeffect.com']
+  s.homepage    = "https://github.com/code-and-effect/effective_rte"
   s.summary     = "Rails gem implementation of the Effective Rich Text Editor"
   s.description = "Formtastic aware WYSIWYG text-area editor"
 
