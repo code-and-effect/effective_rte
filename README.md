@@ -1,6 +1,6 @@
 # Effective RTE
 
-Provides a formtastic textarea replacement input based on the WYMEditor (http://www.wymeditor.org) 1.0.0b3
+Provides a formtastic textarea replacement input based on the WYMEditor (http://www.wymeditor.org) 1.0.0b5
 
 Rails >= 3.2.x, Ruby >= 1.9.x.  Has not been tested/developed for Rails4.
 
@@ -9,7 +9,7 @@ Rails >= 3.2.x, Ruby >= 1.9.x.  Has not been tested/developed for Rails4.
 Add to Gemfile:
 
 ```ruby
-gem 'effective_slugs'
+gem 'effective_rte'
 ```
 
 Run the bundle command to install it:
