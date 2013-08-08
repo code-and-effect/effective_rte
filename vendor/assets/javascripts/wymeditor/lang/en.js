@@ -41,7 +41,5 @@ WYMeditor.STRINGS.en = {
     Containers:       'Containers',
     Classes:          'Classes',
     Status:           'Status',
-    Source_Code:      'Source code',
-    Line_Break:       'Insert Line Break'
-
+    Source_Code:      'Source code'
 };
