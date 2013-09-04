@@ -29,15 +29,15 @@ WYMeditor.editor.prototype.html_cleanup = function(options) {
 WymHtmlCleanup.prototype.init = function() {
     var html_cleanup = this;
 
-    // Override WymEditor default function
-    WYMeditor.editor.prototype.xhtml = function () {
-        var styled_html = style_html(this.html(), {'indent_size' : 1, 'max_char' : 9999, 'indent_char' : '\t'});
-        return styled_html.replace(/(\s*)<br>(\s*)(<\/)/, '$2$3');
-    };
+    // // Override WymEditor default function
+    // WYMeditor.editor.prototype.xhtml = function () {
+    //     var styled_html = style_html(this.html(), {'indent_size' : 1, 'max_char' : 9999, 'indent_char' : '\t'});
+    //     return styled_html.replace(/(\s*)<br>(\s*)(<\/)/, '$2$3');
+    // };
 
-    // Override the default toggleHtml action
-    WYMeditor.editor.prototype.toggleHtml = function () {
-        jQuery(this._box).find(this._options.htmlSelector).toggle();
-        jQuery(this._box).find('.wym_iframe').toggle();
-    };
+    // // Override the default toggleHtml action
+    // WYMeditor.editor.prototype.toggleHtml = function () {
+    //     jQuery(this._box).find(this._options.htmlSelector).toggle();
+    //     jQuery(this._box).find('.wym_iframe').toggle();
+    // };
 };
