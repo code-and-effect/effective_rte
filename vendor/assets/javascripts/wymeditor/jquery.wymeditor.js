@@ -233,7 +233,7 @@ jQuery.extend(WYMeditor, {
     // of the body tag)
     MAIN_CONTAINERS : ["p", "div", "h1",  "h2",  "h3", "h4", "h5", "h6", "pre",
         "blockquote"],
- 
+
     // Containers that we explicitly do not allow at the root of the document.
     // These containers must be wrapped in a valid main container.
     FORBIDDEN_MAIN_CONTAINERS : ["strong", "b", "em", "i", "sub", "sup", "a",
@@ -515,7 +515,7 @@ jQuery.fn.wymeditor = function (options) {
 
         containersItemHtml: String() +
             '<li class="' + WYMeditor.CONTAINER_CLASS + '">' +
-                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CONTAINER_NAME + '" title="' + WYMeditor.CONTAINER_TITLE + '">' +
                     WYMeditor.CONTAINER_TITLE +
                 '</a>' +
             '</li>',
@@ -544,7 +544,7 @@ jQuery.fn.wymeditor = function (options) {
 
         classesItemHtml: String() +
             '<li class="wym_classes_' + WYMeditor.CLASS_NAME + '">' +
-                '<a href="#" name="' + WYMeditor.CLASS_NAME + '">' +
+                '<a href="#" name="' + WYMeditor.CLASS_NAME + '" title="' + WYMeditor.CLASS_TITLE + '">' +
                     WYMeditor.CLASS_TITLE +
                 '</a>' +
             '</li>',
@@ -1906,7 +1906,7 @@ rangy.createModule("DomUtil", function(api, module) {
     var dom = api.dom;
     var DomPosition = dom.DomPosition;
     var DOMException = api.DOMException;
-    
+
     /*----------------------------------------------------------------------------------------------------------------*/
 
     // Utility functions
