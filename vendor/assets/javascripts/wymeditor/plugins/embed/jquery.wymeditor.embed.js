@@ -66,8 +66,6 @@
         // the fact won't affect the existing XhtmlSaxListener
         var XhtmlSaxListener = WYMeditor.XhtmlSaxListener;
         WYMeditor.XhtmlSaxListener = function () {
-            alert('yup');
-
             var listener = XhtmlSaxListener.call(this);
             // param, embed and iframe should be inline tags so that they can
             // be nested inside other elements
