@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "effective_rte"
-  s.version     = "0.5"
+  s.version     = "0.6"
   s.authors     = ['Code and Effect']
   s.email       = ['info@codeandeffect.com']
   s.homepage    = "https://github.com/code-and-effect/effective_rte"
