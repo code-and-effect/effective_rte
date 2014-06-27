@@ -4,6 +4,8 @@ Provides a formtastic textarea replacement input based on the WYMEditor (http://
 
 Rails >= 3.2.x, Ruby >= 1.9.x.  Has not been tested/developed for Rails4.
 
+DONT USE THIS GEM.  The WymEditor isn't compatible with later versions of jQuery
+
 ## Getting Started
 
 Add to Gemfile:
