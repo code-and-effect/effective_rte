@@ -1,10 +1,18 @@
+# Deprecation
+
+This gem has been deprecated and is no longer maintained.
+
+It is based on WYMEditor (http://www.wymeditor.org) real text area.
+
+The WYMEditor isn't compatible with later versions of jQuery.
+
 # Effective RTE
 
 Provides a formtastic textarea replacement input based on the WYMEditor (http://www.wymeditor.org) 1.0.0b5
 
 Rails >= 3.2.x, Ruby >= 1.9.x.  Has not been tested/developed for Rails4.
 
-DONT USE THIS GEM.  The WymEditor isn't compatible with later versions of jQuery
+The WymEditor isn't compatible with later versions of jQuery
 
 ## Getting Started
 
