@@ -1,4 +1,5 @@
 require 'pathname'
+require 'effective_rte/version'
 
 module EffectiveRte
 
