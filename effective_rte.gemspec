@@ -1,14 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 
+# Maintain your gem's version:
+require 'effective_rte/version'
+
 Gem::Specification.new do |s|
   s.name        = "effective_rte"
-  s.version     = "0.6"
+  s.version     = EffectiveRte::VERSION
   s.authors     = ['Code and Effect']
   s.email       = ['info@codeandeffect.com']
   s.homepage    = "https://github.com/code-and-effect/effective_rte"
   s.summary     = "Rails gem implementation of the Effective Rich Text Editor"
-  s.description = "Formtastic aware WYSIWYG text-area editor"
+  s.description = "Formtastic aware WYSIWYG text-area editor (deprecated)"
 
   s.rubyforge_project = "effective_rte"
 
